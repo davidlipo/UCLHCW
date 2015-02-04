@@ -2,6 +2,7 @@ var coin : GameObject;
 var building : GameObject;
 var movingPlane : GameObject;
 var road : GameObject;
+var wall : GameObject;
 
 var coinRemoveEffect : ParticleSystem;
 
@@ -13,6 +14,10 @@ var laneWidth = 87;
 var distanceToAddCoins : int = 1000;
 var distanceBetweenCoins : int = 200;
 
+var distanceToAddWalls : int = 2000;
+var distanceBetweenWalls : int = 1000;
+var wallCounter : int = 0;
+
 var lengthOfBuilding : int = 3406;
 var initialBuildingPosition : int = 1000;
 
@@ -22,6 +27,7 @@ function Start () {
 	var i : int;
 	var rotation : Quaternion = Quaternion.identity;
 	var lane : int;
+	var walllane : int;
 	for(i = 0; i < distanceToAddCoins/distanceBetweenCoins; i++){
 		lane = randomLane();
 		var position : Vector3 = new Vector3 (laneX(lane),20, distanceToAddCoins + i*distanceBetweenCoins);
@@ -31,9 +37,28 @@ function Start () {
 		var coinScript = newCoin.AddComponent('coin');
 		coinScript.controller = gameObject;
 		coinScript.lane = lane;
-		coinScript.removeEffect = coinRemoveEffect;
+		coinScript.removeEffect = coinRemoveEffect;		
 	}
 	
+	for(i = 0; i < distanceToAddWalls/distanceBetweenWalls; i++){
+	    if(transform.position.z < 0){
+	      wallCounter--;
+	    }
+	    if (wallCounter<1){
+	        walllane = lane;
+	    	while (walllane == lane) {
+	    		walllane = randomLane();
+			}
+	    	position = new Vector3 (29, 0 , distanceToAddWalls + i*distanceBetweenWalls);
+	    	wall.transform.localScale = Vector3(29,35,10);
+			var newWall = Instantiate (wall, position, rotation);
+			newWall.transform.parent = movingPlane.transform;
+			var wallScript = newWall.AddComponent('wall');
+			wallScript.controller = gameObject;
+			wallScript.lane = walllane;
+			wallCounter++;
+		}
+	}
 	//Left
 	for(i = 0; i < 2; i++){
 		position = new Vector3 (-555,-223, initialBuildingPosition + i*lengthOfBuilding);

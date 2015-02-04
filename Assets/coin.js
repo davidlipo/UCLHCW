@@ -27,6 +27,5 @@ function Update () {
 		effect.transform.parent = transform;
 		//effect.transform.position = Vector3(0,0,0);
 		effect.Play();
-		//renderer.material.color = Color.red;
 	}
 }
