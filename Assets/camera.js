@@ -11,21 +11,24 @@ function Start () {
 	currentLane = 1;
 	aimLane = currentLane;
 	controllerScript = controller.GetComponent('controller');
+	transform.position = Vector3(30,40,20);
 }
 
 function Update () {
 	//Moving forward
-	movingPlane.transform.Translate (Vector3(0,0,-1) * Time.deltaTime*speed);
+	if (controllerScript.playing) {
+		movingPlane.transform.Translate (Vector3(0,0,-1) * Time.deltaTime*speed);
 		
-	if(aimLane == currentLane) {
-		if (Input.GetKey (KeyCode.LeftArrow) && currentLane > 0) aimLane = currentLane - 1;
-		if (Input.GetKey (KeyCode.RightArrow) && currentLane < controllerScript.numberOfLanes - 1) aimLane = currentLane + 1;
-	}
-	else if(transform.position.x == controllerScript.leftLanePosition + controllerScript.laneWidth*aimLane) {
-		currentLane = aimLane;
-	}
-	else {
-		transform.position = Vector3.MoveTowards(transform.position, Vector3(controllerScript.leftLanePosition + aimLane*controllerScript.laneWidth,transform.position.y,transform.position.z),   speed*Time.deltaTime);
+		if(aimLane == currentLane) {
+			if (Input.GetKey (KeyCode.LeftArrow) && currentLane > 0) aimLane = currentLane - 1;
+			if (Input.GetKey (KeyCode.RightArrow) && currentLane < controllerScript.numberOfLanes - 1) aimLane = currentLane + 1;
+		}
+		else if(transform.position.x == controllerScript.leftLanePosition + controllerScript.laneWidth*aimLane) {
+			currentLane = aimLane;
+		}
+		else {
+			transform.position = Vector3.MoveTowards(transform.position, Vector3(controllerScript.leftLanePosition + aimLane*controllerScript.laneWidth,transform.position.y,transform.position.z),   speed*Time.deltaTime);
+		}
 	}
 }
  

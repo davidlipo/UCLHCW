@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: bec769342d8ba3d4992bd7e6bb5f865d
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - controller: {instanceID: 0}
+  - coinCollect: {instanceID: 0}
+  - removeEffect: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

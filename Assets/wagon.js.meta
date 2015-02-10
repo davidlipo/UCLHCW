@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 6b6844436079e6b46a9f3dcd6c75373b
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - controller: {instanceID: 0}
+  - wagon: {instanceID: 0}
+  - controllerScript: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

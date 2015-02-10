@@ -2,7 +2,14 @@ fileFormatVersion: 2
 guid: a766d10befafed742b2fc16cdbd6d3e1
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - coin: {instanceID: 0}
+  - building: {instanceID: 0}
+  - movingPlane: {instanceID: 0}
+  - road: {instanceID: 0}
+  - wall: {instanceID: 0}
+  - wagon: {instanceID: 0}
+  - coinRemoveEffect: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -3,16 +3,24 @@ var building : GameObject;
 var movingPlane : GameObject;
 var road : GameObject;
 var wall : GameObject;
+var wagon : GameObject;
+var chest : GameObject;
+var coinCollect : AudioClip;
+//var wagonSound : AudioClip;
 
 var coinRemoveEffect : ParticleSystem;
 
+var coinCounter : int = 0;
+
 var numberOfLanes : int = 3;
+
+var playing : boolean = true;
 
 var leftLanePosition : int = -57;
 var laneWidth = 87;
 
 var distanceToAddCoins : int = 1000;
-var distanceBetweenCoins : int = 200;
+var distanceBetweenCoins : int = 1000;
 
 var distanceToAddWalls : int = 2000;
 var distanceBetweenWalls : int = 1000;
@@ -28,9 +36,24 @@ function Start () {
 	var rotation : Quaternion = Quaternion.identity;
 	var lane : int;
 	var walllane : int;
+	
+	var position : Vector3 = new Vector3 (laneX(1),2,0);
+	var newwagon = Instantiate (wagon, position, rotation);
+	newwagon.transform.parent = movingPlane.transform;
+	var wagonScript = newwagon.AddComponent('wagon');
+	wagonScript.controller = gameObject;
+	wagon.transform.localScale = Vector3(25,25,25);
+	
+	position = new Vector3 (laneX(1),20,32);
+	var newChest = Instantiate (chest, position, rotation);
+	newChest.transform.parent = movingPlane.transform;
+	var chestScript = newChest.AddComponent('chest');
+	chestScript.controller = gameObject;
+	chest.transform.localScale = Vector3(15,15,15);
+	
 	for(i = 0; i < distanceToAddCoins/distanceBetweenCoins; i++){
 		lane = randomLane();
-		var position : Vector3 = new Vector3 (laneX(lane),20, distanceToAddCoins + i*distanceBetweenCoins);
+		position = new Vector3 (laneX(lane),20, distanceToAddCoins + i*distanceBetweenCoins);
 		coin.transform.localScale = Vector3(750,750,750);
 		var newCoin = Instantiate (coin, position, rotation);
 		newCoin.transform.parent = movingPlane.transform;
