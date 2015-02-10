@@ -28,6 +28,6 @@ function Update () {
 		effect.transform.localScale = Vector3(2,2,2);
 		effect.transform.parent = transform;
 		effect.Play();
-		AudioSource.PlayClipAtPoint(controllerScript.coinCollect, transform.position);
+		audio.Play();
 	}
 }

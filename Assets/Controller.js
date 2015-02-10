@@ -5,8 +5,8 @@ var road : GameObject;
 var wall : GameObject;
 var wagon : GameObject;
 var chest : GameObject;
-var coinCollect : AudioClip;
-//var wagonSound : AudioClip;
+var currentTime : float = 0.0;
+var endTime : float = 0.0;
 
 var coinRemoveEffect : ParticleSystem;
 
@@ -32,6 +32,10 @@ var initialBuildingPosition : int = 1000;
 var initialRoadPosition : int = 800;
 
 function Start () {
+
+	currentTime = 0.0;
+	endTime = 60;
+
 	var i : int;
 	var rotation : Quaternion = Quaternion.identity;
 	var lane : int;
@@ -110,6 +114,16 @@ function Start () {
 }
 
 function Update () {
+
+	currentTime += Time.deltaTime;
+
+	if(currentTime >= endTime){
+		playing = false;
+	}
+
+	if(!playing){
+		GameObject.FindWithTag('BackgroundNoise').audio.Stop();
+	}
 }
 
 function randomLane(){
