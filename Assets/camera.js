@@ -12,6 +12,8 @@ function Start () {
 	aimLane = currentLane;
 	controllerScript = controller.GetComponent('controller');
 	transform.position = Vector3(30,40,20);
+
+	send(["coin", 0, false, 28.40]); //Test
 }
 
 function Update () {
@@ -30,5 +32,37 @@ function Update () {
 			transform.position = Vector3.MoveTowards(transform.position, Vector3(controllerScript.leftLanePosition + aimLane*controllerScript.laneWidth,transform.position.y,transform.position.z),   speed*Time.deltaTime);
 		}
 	}
+
 }
+
+function send(data){  //Put this here for now
+
+	var form = new WWWForm();
+
+	form.AddField("typeOfObject", data[0]);
+	form.AddField("lane", data[1]);
+	form.AddField("checkCollection", data[2]);
+	form.AddField("time", data[3]);
+	
+	var url = "http://localhost/unity/storeData.php";
+	var w = WWW(url, form);
+
+    yield w;
+
+    if(w.error)
+    {
+        Debug.Log(w.error);
+    }
+    else
+    {
+        Debug.Log(w.text);
+        Debug.Log("Data has been sent to mysql");
+    }
+
+}
+
+
+
+
+
  
