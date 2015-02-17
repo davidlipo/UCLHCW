@@ -12,6 +12,9 @@
     <div id="primaryContainer" class="primaryContainer clearfix">
         <img id="image" src="img/uclh.png" class="image" />
         <img id="image1" src="img/uclh%20(1).png" class="image" />
+		
+		<img src="bargraph.php">
+		
         <a href="home.html">
             <input id="input" type="button" value="Main menu"></input>
         </a>
