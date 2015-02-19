@@ -1,3 +1,8 @@
+import System;
+import System.IO;
+var  coinFileName = "coins.txt";
+var  wallFileName = "walls.txt";
+
 var coin : GameObject;
 var building : GameObject;
 var movingPlane : GameObject;
@@ -31,6 +36,14 @@ var initialBuildingPosition : int = 1000;
 
 var initialRoadPosition : int = 800;
 
+var coinFinalArray = new Array(10);
+var coinArrayIndex : int = 0;
+
+var wallFinalArray = new Array(10);
+var wallArrayIndex : int = 0;
+
+var cameraScript : camera;
+
 function Start () {
 
 	currentTime = 0.0;
@@ -40,6 +53,8 @@ function Start () {
 	var rotation : Quaternion = Quaternion.identity;
 	var lane : int;
 	var walllane : int;
+	
+	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
 	
 	var position : Vector3 = new Vector3 (laneX(1),2,0);
 	var newwagon = Instantiate (wagon, position, rotation);
@@ -55,9 +70,9 @@ function Start () {
 	chestScript.controller = gameObject;
 	chest.transform.localScale = Vector3(15,15,15);
 	
-	for(i = 0; i < distanceToAddCoins/distanceBetweenCoins; i++){
+//	for(i = 0; i < distanceToAddCoins/distanceBetweenCoins; i++){
 		lane = randomLane();
-		position = new Vector3 (laneX(lane),20, distanceToAddCoins + i*distanceBetweenCoins);
+		position = new Vector3 (laneX(lane),20, -2);
 		coin.transform.localScale = Vector3(750,750,750);
 		var newCoin = Instantiate (coin, position, rotation);
 		newCoin.transform.parent = movingPlane.transform;
@@ -65,27 +80,19 @@ function Start () {
 		coinScript.controller = gameObject;
 		coinScript.lane = lane;
 		coinScript.removeEffect = coinRemoveEffect;		
-	}
+//	}
 	
-	for(i = 0; i < distanceToAddWalls/distanceBetweenWalls; i++){
-	    if(transform.position.z < 0){
-	      wallCounter--;
-	    }
-	    if (wallCounter<1){
-	        walllane = lane;
-	    	while (walllane == lane) {
-	    		walllane = randomLane();
-			}
-	    	position = new Vector3 (29, 0 , distanceToAddWalls + i*distanceBetweenWalls);
-	    	wall.transform.localScale = Vector3(29,35,10);
-			var newWall = Instantiate (wall, position, rotation);
-			newWall.transform.parent = movingPlane.transform;
-			var wallScript = newWall.AddComponent('wall');
-			wallScript.controller = gameObject;
-			wallScript.lane = walllane;
-			wallCounter++;
-		}
-	}
+//	for(i = 0; i < distanceToAddWalls/distanceBetweenWalls; i++){
+	    position = new Vector3 (29, 0 , -2);
+	    wall.transform.localScale = Vector3(29,35,10);
+        var newWall = Instantiate (wall, position, rotation);
+        newWall.transform.parent = movingPlane.transform;
+        var wallScript = newWall.AddComponent('wall');
+        wallScript.controller = gameObject;
+        wallScript.lane = walllane;
+        wallCounter++;
+//	}
+    
 	//Left
 	for(i = 0; i < 2; i++){
 		position = new Vector3 (-555,-223, initialBuildingPosition + i*lengthOfBuilding);
@@ -119,6 +126,51 @@ function Update () {
 
 	if(currentTime >= endTime){
 		playing = false;
+        
+        var coinFile = File.CreateText(coinFileName);
+		var i : int;
+		var j : int;
+		for (i=0; i<coinArrayIndex; i++) {
+			for (j=0; j<3; j++) {
+				if (j==0) {
+					if (coinFinalArray[i][j]){
+						coinFile.Write("Yes ");
+					}
+					else {
+						coinFile.Write("No ");
+					}
+				}
+				else {
+					coinFile.Write(coinFinalArray[i][j].ToString());
+				}
+				coinFile.WriteLine(" ");
+			}
+			coinFile.WriteLine(" ");
+			coinFile.WriteLine(" ");
+		}
+		coinFile.Close();
+		
+		var wallFile = File.CreateText(wallFileName);
+		for (i=0; i<wallArrayIndex; i++) {
+			for (j=0; j<3; j++) {
+				if (j==0) {
+					if (wallFinalArray[i][j]){
+						wallFile.Write("Yes ");
+					}
+					else {
+						wallFile.Write("No ");
+					}
+				}
+				else {
+					wallFile.Write(wallFinalArray[i][j].ToString());
+				}
+				wallFile.WriteLine(" ");
+			}
+			wallFile.WriteLine(" ");
+			wallFile.WriteLine(" ");
+		}
+		wallFile.Close();
+		
 	}
 
 	if(!playing){
@@ -127,7 +179,7 @@ function Update () {
 }
 
 function randomLane(){
-	return Random.Range(0,3);
+	return UnityEngine.Random.Range(0,3);
 }
 
 function laneX(laneNumber : int){

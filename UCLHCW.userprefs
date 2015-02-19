@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\wall.js">
+    <Files>
+      <File FileName="Assets\controller.js" Line="173" Column="3" />
+      <File FileName="Assets\camera.js" Line="13" Column="59" />
+      <File FileName="Assets\coin.js" Line="54" Column="6" />
+      <File FileName="Assets\wall.js" Line="55" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
