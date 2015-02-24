@@ -13,7 +13,8 @@ function Start () {
 	controllerScript = controller.GetComponent('controller');
 	transform.position = Vector3(30,40,20);
 
-	send(["coin", 0, false, 28.40]); //Test
+	send(["coin", 0, false, 28.40]);
+
 }
 
 function Update () {
