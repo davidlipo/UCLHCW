@@ -21,20 +21,24 @@ function Start () {
 	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
 }
 
+function Generate() {
+	controllerScript = controller.GetComponent('controller');
+	hasShownEffect = false;
+	lane = controllerScript.randomLane();
+	transform.position.z = controllerScript.distanceToAddCoins;
+	transform.position.x = controllerScript.laneX(lane);
+    laneDiff = lane - cameraScript.currentLane;
+    currentTime = 0;
+    saved = false;
+   	written = false;
+   	controllerScript.objectCount += 1;
+}
+
 function Update () {
 	transform.Rotate(speed * Vector3.up * Time.deltaTime);
 	var controllerScript = controller.GetComponent('controller');
-	if(transform.position.z < 0) {
-		hasShownEffect = false;
-		lane = controllerScript.randomLane();
-		transform.position.z = controllerScript.distanceToAddCoins;
-		transform.position.x = controllerScript.laneX(lane);
-        laneDiff = lane - cameraScript.currentLane;
-        currentTime = 0;
-        saved = false;
-        written = false;
-	}
-	else if(transform.position.z < 100 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane && !hasShownEffect){
+
+	if(transform.position.z < 100 && transform.position.z > 0 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane && !hasShownEffect){
 		hasShownEffect = true;
 		controllerScript.coinCounter+=1;
 		Debug.Log(controllerScript.coinCounter);
@@ -58,5 +62,6 @@ function Update () {
 		controllerScript.coinFinalArray[controllerScript.coinArrayIndex][2] = laneTime; 
 		controllerScript.coinArrayIndex += 1;	
 		written = true;
+		controllerScript.objectCount -= 1;
 	} 
 }

@@ -18,6 +18,19 @@ function Start () {
     cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
 }
 
+function Generate() {
+	controllerScript = controller.GetComponent('controller'); 
+	lane = controllerScript.randomLane();
+	transform.position.z = controllerScript.distanceToAddWalls;
+	transform.position.x = controllerScript.laneX(lane);
+    laneDiff = lane - cameraScript.currentLane;
+	written = false;
+	avoid = true;
+	currentTime = 0;
+    saved = false;
+    controllerScript.objectCount += 1;
+}
+
 function Update () {
     if (pauseTimer>0) {
 		if (countdown()) {
@@ -28,17 +41,8 @@ function Update () {
 			}
 		}
 	}
-	if(transform.position.z < 0) {
-		lane = controllerScript.randomLane();
-		transform.position.z = controllerScript.distanceToAddWalls;
-		transform.position.x = controllerScript.laneX(lane);
-        laneDiff = lane - cameraScript.currentLane;
-		written = false;
-		avoid = true;
-		currentTime = 0;
-        saved = false;
-	}
-	else if(transform.position.z < 30 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane){
+
+	if(transform.position.z < 30 && transform.position.z > 0 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane){
 		controllerScript.coinCounter-=1;
 		Debug.Log(controllerScript.coinCounter);
         transform.position.z = -5;
@@ -61,6 +65,7 @@ function Update () {
 		controllerScript.wallFinalArray[controllerScript.wallArrayIndex][2] = laneTime; 
 		controllerScript.wallArrayIndex += 1;	
 		written = true;
+		controllerScript.objectCount -= 1;
 	} 
 
 }

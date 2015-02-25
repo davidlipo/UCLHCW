@@ -43,6 +43,11 @@ var wallFinalArray = new Array(10);
 var wallArrayIndex : int = 0;
 
 var cameraScript : camera;
+var coinScript;
+var wallScript;
+
+var coinWall : int = 0;
+var objectCount : int = 0;
 
 function Start () {
 
@@ -70,28 +75,24 @@ function Start () {
 	chestScript.controller = gameObject;
 	chest.transform.localScale = Vector3(15,15,15);
 	
-//	for(i = 0; i < distanceToAddCoins/distanceBetweenCoins; i++){
-		lane = randomLane();
-		position = new Vector3 (laneX(lane),20, -2);
-		coin.transform.localScale = Vector3(750,750,750);
-		var newCoin = Instantiate (coin, position, rotation);
-		newCoin.transform.parent = movingPlane.transform;
-		var coinScript = newCoin.AddComponent('coin');
-		coinScript.controller = gameObject;
-		coinScript.lane = lane;
-		coinScript.removeEffect = coinRemoveEffect;		
-//	}
+	lane = randomLane();
+	position = new Vector3 (laneX(lane),20, -10);
+	coin.transform.localScale = Vector3(750,750,750);
+	var newCoin = Instantiate (coin, position, rotation);
+	newCoin.transform.parent = movingPlane.transform;
+	coinScript = newCoin.AddComponent('coin');
+	coinScript.controller = gameObject;
+	coinScript.lane = lane;
+	coinScript.removeEffect = coinRemoveEffect;		
 	
-//	for(i = 0; i < distanceToAddWalls/distanceBetweenWalls; i++){
-	    position = new Vector3 (29, 0 , -2);
-	    wall.transform.localScale = Vector3(29,35,10);
-        var newWall = Instantiate (wall, position, rotation);
-        newWall.transform.parent = movingPlane.transform;
-        var wallScript = newWall.AddComponent('wall');
-        wallScript.controller = gameObject;
-        wallScript.lane = walllane;
-        wallCounter++;
-//	}
+	position = new Vector3 (29, 0 , -10);
+	wall.transform.localScale = Vector3(29,35,10);
+    var newWall = Instantiate (wall, position, rotation);
+    newWall.transform.parent = movingPlane.transform;
+    wallScript = newWall.AddComponent('wall');
+    wallScript.controller = gameObject;
+    wallScript.lane = walllane;
+    wallCounter++;
     
 	//Left
 	for(i = 0; i < 2; i++){
@@ -123,6 +124,16 @@ function Start () {
 function Update () {
 
 	currentTime += Time.deltaTime;
+	
+	if (objectCount == 0) {
+		coinWall = randomObject();
+		if(coinWall == 0){
+			coinScript.Generate();
+		}
+		else {
+			wallScript.Generate();
+		}
+	}
 
 	if(currentTime >= endTime){
 		playing = false;
@@ -180,6 +191,10 @@ function Update () {
 
 function randomLane(){
 	return UnityEngine.Random.Range(0,3);
+}
+
+function randomObject(){
+	return UnityEngine.Random.Range(0,2);
 }
 
 function laneX(laneNumber : int){
