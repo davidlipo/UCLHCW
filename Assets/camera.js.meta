@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: f9798f739c859a642b7cfcbbfe1daf9a
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - controller: {instanceID: 0}
+  - movingPlane: {instanceID: 0}
+  - controllerScript: {instanceID: 0}
+  - crashSound: {fileID: 8300000, guid: 0c337ddde305ff04b830fa9d179fee6a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

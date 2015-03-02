@@ -9,7 +9,10 @@ MonoImporter:
   - road: {instanceID: 0}
   - wall: {instanceID: 0}
   - wagon: {instanceID: 0}
+  - chest: {instanceID: 0}
   - coinRemoveEffect: {instanceID: 0}
+  - cameraScript: {instanceID: 0}
+  - crashSound: {fileID: 8300000, guid: 0c337ddde305ff04b830fa9d179fee6a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

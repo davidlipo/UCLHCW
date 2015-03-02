@@ -7,14 +7,11 @@ var currentLane : int;
 var aimLane : int;
 
 function Start () {
-	speed = 400;
+	speed = 300;
 	currentLane = 1;
 	aimLane = currentLane;
 	controllerScript = controller.GetComponent('controller');
 	transform.position = Vector3(30,40,20);
-
-	send(["coin", 0, false, 28.40]);
-
 }
 
 function Update () {

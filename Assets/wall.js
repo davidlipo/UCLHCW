@@ -19,7 +19,6 @@ function Start () {
 }
 
 function Generate() {
-	controllerScript = controller.GetComponent('controller'); 
 	lane = controllerScript.randomLane();
 	transform.position.z = controllerScript.distanceToAddWalls;
 	transform.position.x = controllerScript.laneX(lane);
@@ -32,6 +31,7 @@ function Generate() {
 }
 
 function Update () {
+	controllerScript = controller.GetComponent('controller'); 
     if (pauseTimer>0) {
 		if (countdown()) {
 			Debug.Log('countdown' + pauseTimer);			

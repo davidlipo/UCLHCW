@@ -24,11 +24,11 @@ var playing : boolean = true;
 var leftLanePosition : int = -57;
 var laneWidth = 87;
 
-var distanceToAddCoins : int = 1000;
-var distanceBetweenCoins : int = 1000;
+var distanceToAddCoins : int = 500;
+var distanceBetweenCoins : int = 500;
 
-var distanceToAddWalls : int = 2000;
-var distanceBetweenWalls : int = 1000;
+var distanceToAddWalls : int = 500;
+var distanceBetweenWalls : int = 500;
 var wallCounter : int = 0;
 
 var lengthOfBuilding : int = 3406;
@@ -48,6 +48,8 @@ var wallScript;
 
 var coinWall : int = 0;
 var objectCount : int = 0;
+
+var backgroundSound : boolean = true;
 
 function Start () {
 
@@ -123,6 +125,11 @@ function Start () {
 
 function Update () {
 
+	if (!backgroundSound){
+		GameObject.FindWithTag('BackgroundNoise').audio.Play();
+		backgroundSound = true;
+	}
+
 	currentTime += Time.deltaTime;
 	
 	if (objectCount == 0) {
@@ -186,6 +193,7 @@ function Update () {
 
 	if(!playing){
 		GameObject.FindWithTag('BackgroundNoise').audio.Stop();
+		backgroundSound = false;
 	}
 }
 
