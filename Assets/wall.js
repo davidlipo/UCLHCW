@@ -19,9 +19,11 @@ function Start () {
 }
 
 function Generate() {
+    controllerScript = controller.GetComponent('controller');
 	lane = controllerScript.randomLane();
 	transform.position.z = controllerScript.distanceToAddWalls;
 	transform.position.x = controllerScript.laneX(lane);
+	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
     laneDiff = lane - cameraScript.currentLane;
 	written = false;
 	avoid = true;
@@ -57,7 +59,7 @@ function Update () {
 		saved = true;
 	}
 	
-	if (transform.position.z < 5 && !written) {
+	if (transform.position.z < 5 && transform.position.z > -10 && !written) {
 	    cameraScript.send(["Wall", laneDiff, avoid, laneTime]);
 		controllerScript.wallFinalArray[controllerScript.wallArrayIndex] = new Array(3);
 		controllerScript.wallFinalArray[controllerScript.wallArrayIndex][0] = avoid; 

@@ -78,7 +78,7 @@ function Start () {
 	chest.transform.localScale = Vector3(15,15,15);
 	
 	lane = randomLane();
-	position = new Vector3 (laneX(lane),20, -10);
+	position = new Vector3 (laneX(lane),20, -20);
 	coin.transform.localScale = Vector3(750,750,750);
 	var newCoin = Instantiate (coin, position, rotation);
 	newCoin.transform.parent = movingPlane.transform;
@@ -87,7 +87,7 @@ function Start () {
 	coinScript.lane = lane;
 	coinScript.removeEffect = coinRemoveEffect;		
 	
-	position = new Vector3 (29, 0 , -10);
+	position = new Vector3 (29, 0 , -20);
 	wall.transform.localScale = Vector3(29,35,10);
     var newWall = Instantiate (wall, position, rotation);
     newWall.transform.parent = movingPlane.transform;

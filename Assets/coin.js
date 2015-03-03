@@ -27,6 +27,7 @@ function Generate() {
 	lane = controllerScript.randomLane();
 	transform.position.z = controllerScript.distanceToAddCoins;
 	transform.position.x = controllerScript.laneX(lane);
+	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
     laneDiff = lane - cameraScript.currentLane;
     currentTime = 0;
     saved = false;
@@ -54,7 +55,7 @@ function Update () {
 		laneTime = currentTime;
 		saved = true;
 	}
-	if (transform.position.z < 5 && !written) {
+	if (transform.position.z < 5 && transform.position.z > -10 && !written) {
 	    cameraScript.send(["Coin", laneDiff, hasShownEffect, laneTime]);
 		controllerScript.coinFinalArray[controllerScript.coinArrayIndex] = new Array(3);
 		controllerScript.coinFinalArray[controllerScript.coinArrayIndex][0] = hasShownEffect; 
