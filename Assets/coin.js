@@ -3,7 +3,8 @@
 var removeEffect : ParticleSystem;
 var hasShownEffect : boolean = false;
 
-var speed : int;
+var rotationSpeed : int;
+var coinSpeed : int = 0;
 
 var lane : int;
 
@@ -16,9 +17,10 @@ var saved : boolean;
 var written : boolean;
 
 function Start () {
-	speed = 80 + UnityEngine.Random.Range(0,40);
+	rotationSpeed = 80 + UnityEngine.Random.Range(0,40);
     controllerScript = controller.GetComponent('controller');
 	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
+	
 }
 
 function Generate() {
@@ -36,7 +38,10 @@ function Generate() {
 }
 
 function Update () {
-	transform.Rotate(speed * Vector3.up * Time.deltaTime);
+
+	levelNumbers(50,10); //Testing 
+	
+	transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
 	var controllerScript = controller.GetComponent('controller');
 
 	if(transform.position.z < 100 && transform.position.z > 0 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane && !hasShownEffect){
@@ -47,7 +52,7 @@ function Update () {
 		effect.transform.localScale = Vector3(2,2,2);
 		effect.transform.parent = transform;
 		effect.Play();
-		audio.Play();
+		GetComponent.<AudioSource>().Play();
 	}
     
     currentTime += Time.deltaTime;
@@ -65,4 +70,39 @@ function Update () {
 		written = true;
 		controllerScript.objectCount -= 1;
 	} 
+}
+
+function levelNumbers(leftLevel, rightLevel){
+
+	var leftModifier = leftLevel * 10;
+	var rightModifier = rightLevel * 10; //Change modifiers depending on what works
+	
+	speedLeft = leftModifier;
+	speedRight = rightModifier;
+	
+	changeDifficulty(speedLeft, speedRight);
+
+}
+
+//TODO Coin lanes != current lane && Wall lanes == current lane
+function changeDifficulty(left, right){
+
+	var currentPosition = cameraScript.transform.position.x;
+	var coinPosition = transform.position.x;
+	
+	//on the left
+	if(coinPosition < currentPosition){ 
+	
+		coinSpeed = left;
+		transform.Translate (Vector3(0,0,-1) * Time.deltaTime*coinSpeed, Space.World);
+	}
+	
+	//on the right
+	if(coinPosition > currentPosition){
+	
+		coinSpeed = right;
+		transform.Translate (Vector3(0,0,-1) * Time.deltaTime*coinSpeed, Space.World);
+	}
+
+
 }

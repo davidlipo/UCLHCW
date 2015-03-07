@@ -66,23 +66,24 @@ function Start () {
 	var position : Vector3 = new Vector3 (laneX(1),2,0);
 	var newwagon = Instantiate (wagon, position, rotation);
 	newwagon.transform.parent = movingPlane.transform;
-	var wagonScript = newwagon.AddComponent('wagon');
+	var wagonScript = newwagon.AddComponent.<wagon>();
 	wagonScript.controller = gameObject;
 	wagon.transform.localScale = Vector3(25,25,25);
 	
 	position = new Vector3 (laneX(1),20,32);
 	var newChest = Instantiate (chest, position, rotation);
 	newChest.transform.parent = movingPlane.transform;
-	var chestScript = newChest.AddComponent('chest');
+	var chestScript = newChest.AddComponent.<chest>();
 	chestScript.controller = gameObject;
 	chest.transform.localScale = Vector3(15,15,15);
 	
 	lane = randomLane();
+	
 	position = new Vector3 (laneX(lane),20, -20);
 	coin.transform.localScale = Vector3(750,750,750);
 	var newCoin = Instantiate (coin, position, rotation);
 	newCoin.transform.parent = movingPlane.transform;
-	coinScript = newCoin.AddComponent('coin');
+	coinScript = newCoin.AddComponent.<coin>();
 	coinScript.controller = gameObject;
 	coinScript.lane = lane;
 	coinScript.removeEffect = coinRemoveEffect;		
@@ -91,7 +92,7 @@ function Start () {
 	wall.transform.localScale = Vector3(29,35,10);
     var newWall = Instantiate (wall, position, rotation);
     newWall.transform.parent = movingPlane.transform;
-    wallScript = newWall.AddComponent('wall');
+    wallScript = newWall.AddComponent.<wall>();
     wallScript.controller = gameObject;
     wallScript.lane = walllane;
     wallCounter++;
@@ -101,7 +102,7 @@ function Start () {
 		position = new Vector3 (-555,-223, initialBuildingPosition + i*lengthOfBuilding);
 		var newBuilding = Instantiate (building, position, rotation);
 		newBuilding.transform.parent = movingPlane.transform;
-		var buildingScript = newBuilding.AddComponent('building');
+		var buildingScript = newBuilding.AddComponent.<building>();
 		buildingScript.controller = gameObject;
 	}
 	
@@ -110,15 +111,15 @@ function Start () {
 		position = new Vector3 (615,-223, initialBuildingPosition + i*lengthOfBuilding);
 		newBuilding = Instantiate (building, position, rotation * Quaternion.Euler(0,180f,0));
 		newBuilding.transform.parent = movingPlane.transform;
-		buildingScript = newBuilding.AddComponent('building');
+		buildingScript = newBuilding.AddComponent.<building>();
 		buildingScript.controller = gameObject;
 	}
 	
 	for(i = 0; i < 2; i++){
-		position = new Vector3 (30,1, initialRoadPosition + i*road.renderer.bounds.size.z);
+		position = new Vector3 (30,1, initialRoadPosition + i*road.GetComponent.<Renderer>().bounds.size.z);
 		var newRoad = Instantiate (road, position, rotation);
 		newRoad.transform.parent = movingPlane.transform;
-		var roadScript = newRoad.AddComponent('road');
+		var roadScript = newRoad.AddComponent.<road>();
 		roadScript.controller = gameObject;
 	}
 }
@@ -126,7 +127,7 @@ function Start () {
 function Update () {
 
 	if (!backgroundSound){
-		GameObject.FindWithTag('BackgroundNoise').audio.Play();
+		GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Play();
 		backgroundSound = true;
 	}
 
@@ -192,7 +193,7 @@ function Update () {
 	}
 
 	if(!playing){
-		GameObject.FindWithTag('BackgroundNoise').audio.Stop();
+		GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Stop();
 		backgroundSound = false;
 	}
 }

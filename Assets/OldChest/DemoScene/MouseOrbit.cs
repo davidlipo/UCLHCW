@@ -37,8 +37,8 @@ public class MouseOrbit : MonoBehaviour {
         y = angles.x;
  
         // Make the rigid body not change rotation
-        if (rigidbody)
-            rigidbody.freezeRotation = true;
+        if (GetComponent<Rigidbody>())
+            GetComponent<Rigidbody>().freezeRotation = true;
 	}
 	
     void LateUpdate () {
@@ -99,24 +99,24 @@ public class MouseOrbit : MonoBehaviour {
 			
 			
 		if(Input.GetMouseButtonUp(0)){
-		if(!target.animation.isPlaying && mp.x == Input.mousePosition.x && mp.y == Input.mousePosition.y){
+		if(!target.GetComponent<Animation>().isPlaying && mp.x == Input.mousePosition.x && mp.y == Input.mousePosition.y){
 		if(distance<14)
 			camZ = true;
-		Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+		Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
              if (Physics.Raycast(ray, out hit)){
 				if(!open){ 
-						target.animation["ChestAnim"].speed = 1.0f;
+						target.GetComponent<Animation>()["ChestAnim"].speed = 1.0f;
 						open = true;
 
 						
 					}
 				else {
-							target.animation["ChestAnim"].time = target.animation["ChestAnim"].length;	
-							target.animation["ChestAnim"].speed = -1.0f;
+							target.GetComponent<Animation>()["ChestAnim"].time = target.GetComponent<Animation>()["ChestAnim"].length;	
+							target.GetComponent<Animation>()["ChestAnim"].speed = -1.0f;
 					open = false;
 					}
-						target.animation.Play("ChestAnim");
+						target.GetComponent<Animation>().Play("ChestAnim");
 
        		}
 		}		

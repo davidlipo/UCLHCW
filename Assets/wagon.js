@@ -7,7 +7,7 @@ var aimLane : int;
 var wobble : float = -0.03;
 
 function Start () {
-	speed = 140;
+	speed = 100;
 	controllerScript = controller.GetComponent('controller');
 	currentLane = 1;
 	aimLane = currentLane;

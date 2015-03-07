@@ -6,7 +6,7 @@ var currentLane : int;
 var aimLane : int;
 
 function Start () {
-	speed = 140;
+	speed = 100;
 	controllerScript = controller.GetComponent('controller');
 	currentLane = 1;
 	aimLane = currentLane;

@@ -2,12 +2,11 @@
 static var speed : int;
 var movingPlane : GameObject;
 var controllerScript : Component;
-
 var currentLane : int;
 var aimLane : int;
 
 function Start () {
-	speed = 300;
+	speed = 100;
 	currentLane = 1;
 	aimLane = currentLane;
 	controllerScript = controller.GetComponent('controller');
