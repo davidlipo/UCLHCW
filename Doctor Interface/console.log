@@ -1,0 +1,17 @@
+Message: [Extension] starting to load src//extensions/default/_templateforextensions/
+Source: archive://main-optimized.js
+Line: 2427
+-----------------------
+Message: [Extension] failed to load src//extensions/default/_templateforextensions/
+Source: archive://main-optimized.js
+Line: 2427
+-----------------------
+Message: Reflow Startup: 887 ms
+Source: archive://main-optimized.js
+Line: 324
+-----------------------
+Message: Uncaught Error: Script error for: localized/strings
+http://requirejs.org/docs/errors.html#scripterror
+Source: file:///C:/Program%20Files%20(x86)/Adobe/Adobe%20Edge%20Reflow%20CC%20Preview/www/reflow/assets/js/libs/require/require.min.js
+Line: 8
+-----------------------
