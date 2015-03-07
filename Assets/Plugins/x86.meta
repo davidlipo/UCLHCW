@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: 0c71c6a96f47554489da40c46ce2b5f9
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1425754312
 licenseType: Free
 DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+DefaultImporter:
+  userData: 
+>>>>>>> origin/master
