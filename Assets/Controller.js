@@ -61,7 +61,7 @@ function Start () {
 	var lane : int;
 	var walllane : int;
 	
-	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
+	cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
 	
 	var position : Vector3 = new Vector3 (laneX(1),2,0);
 	var newwagon = Instantiate (wagon, position, rotation);

@@ -15,7 +15,7 @@ var laneTime : float;
 
 function Start () {
 	controllerScript = controller.GetComponent('controller');
-    cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
+    cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
 }
 
 function Generate() {
@@ -23,7 +23,6 @@ function Generate() {
 	lane = controllerScript.randomLane();
 	transform.position.z = controllerScript.distanceToAddWalls;
 	transform.position.x = controllerScript.laneX(lane);
-	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
     laneDiff = lane - cameraScript.currentLane;
 	written = false;
 	avoid = true;
@@ -44,7 +43,7 @@ function Update () {
 		}
 	}
 
-	if(transform.position.z < 30 && transform.position.z > 0 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane){
+	if(transform.position.z < 30 && transform.position.z > 0 && cameraScript.currentLane == lane){
 		controllerScript.coinCounter-=1;
 		Debug.Log(controllerScript.coinCounter);
         transform.position.z = -5;

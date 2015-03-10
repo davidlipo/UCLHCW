@@ -19,7 +19,7 @@ var written : boolean;
 function Start () {
 	rotationSpeed = 80 + UnityEngine.Random.Range(0,40);
     controllerScript = controller.GetComponent('controller');
-	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
+	cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
 	
 }
 
@@ -29,8 +29,7 @@ function Generate() {
 	lane = controllerScript.randomLane();
 	transform.position.z = controllerScript.distanceToAddCoins;
 	transform.position.x = controllerScript.laneX(lane);
-	cameraScript = GameObject.Find('Main Camera').gameObject.GetComponent('camera');
-    laneDiff = lane - cameraScript.currentLane;
+	laneDiff = lane - cameraScript.currentLane;
     currentTime = 0;
     saved = false;
    	written = false;
@@ -44,7 +43,7 @@ function Update () {
 	transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
 	var controllerScript = controller.GetComponent('controller');
 
-	if(transform.position.z < 100 && transform.position.z > 0 && GameObject.FindWithTag('MainCamera').GetComponent('camera').currentLane == lane && !hasShownEffect){
+	if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.currentLane == lane && !hasShownEffect){
 		hasShownEffect = true;
 		controllerScript.coinCounter+=1;
 		Debug.Log(controllerScript.coinCounter);
