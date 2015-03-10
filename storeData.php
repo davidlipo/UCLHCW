@@ -2,7 +2,7 @@
     $sql_connect = new mysqli("localhost", "root", "") or die ("no DB Connection");
     mysqli_select_db($sql_connect, "uclvr") or die ("DB not found"); 
 
-    $attemptId = 1;
+    $attemptId = $_POST['attemptID'];
     
     $objectType = $_POST['typeOfObject'];
     $lane = $_POST['lane'];

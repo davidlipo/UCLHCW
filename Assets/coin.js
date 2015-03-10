@@ -38,7 +38,7 @@ function Generate() {
 
 function Update () {
 
-	levelNumbers(50,10); //Testing 
+	levelNumbers(3,4); //Testing 
 	
 	transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
 	var controllerScript = controller.GetComponent('controller');
@@ -60,7 +60,7 @@ function Update () {
 		saved = true;
 	}
 	if (transform.position.z < 5 && transform.position.z > -10 && !written) {
-	    cameraScript.send(["Coin", laneDiff, hasShownEffect, laneTime]);
+	    cameraScript.send(["Coin", laneDiff, hasShownEffect, laneTime.ToString()]);
 		controllerScript.coinFinalArray[controllerScript.coinArrayIndex] = new Array(3);
 		controllerScript.coinFinalArray[controllerScript.coinArrayIndex][0] = hasShownEffect; 
 		controllerScript.coinFinalArray[controllerScript.coinArrayIndex][1] = laneDiff; 

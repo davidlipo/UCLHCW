@@ -29,5 +29,7 @@ function OnGUI () {
 }
 
 function startGame () {
+	var statScr : staticScript = GameObject.FindWithTag("Static").gameObject.GetComponent("staticScript");
+	statScr.patientID = stringToEdit;
 	Application.LoadLevel("game");
 }

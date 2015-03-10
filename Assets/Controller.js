@@ -51,10 +51,27 @@ var objectCount : int = 0;
 
 var backgroundSound : boolean = true;
 
+var attemptID : String;
+
 function Start () {
 
 	currentTime = 0.0;
 	endTime = 60;
+
+	var statScr : staticScript = GameObject.FindWithTag("Static").gameObject.GetComponent("staticScript");
+
+	
+	var form = new WWWForm();
+	form.AddField("patientID", statScr.patientID);
+	form.AddField("level", 1);
+	
+	var url = "http://localhost/unity/UCLHCW/newAttempt.php";
+	var w = WWW(url, form);
+	
+	yield w;
+	
+	attemptID = w.text;
+	Debug.Log(attemptID);
 
 	var i : int;
 	var rotation : Quaternion = Quaternion.identity;
