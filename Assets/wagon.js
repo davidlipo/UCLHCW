@@ -8,7 +8,7 @@ var wobble : float = -0.03;
 
 function Start () {
 	speed = 100;
-	controllerScript = controller.GetComponent('controller');
+	controllerScript = controller.GetComponent('Controller');
 	currentLane = 1;
 	aimLane = currentLane;
 //	audio.loop = true;

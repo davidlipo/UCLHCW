@@ -7,7 +7,7 @@ var aimLane : int;
 
 function Start () {
 	speed = 100;
-	controllerScript = controller.GetComponent('controller');
+	controllerScript = controller.GetComponent('Controller');
 	currentLane = 1;
 	aimLane = currentLane;
 	transform.Rotate(Vector3(0,90,0));

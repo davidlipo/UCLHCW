@@ -9,7 +9,7 @@ function Start () {
 	speed = 100;
 	currentLane = 1;
 	aimLane = currentLane;
-	controllerScript = controller.GetComponent('controller');
+	controllerScript = controller.GetComponent('Controller');
 	transform.position = Vector3(30,40,20);
 }
 

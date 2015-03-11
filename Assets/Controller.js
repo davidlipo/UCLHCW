@@ -58,11 +58,18 @@ function Start () {
 	currentTime = 0.0;
 	endTime = 60;
 
-	var statScr : staticScript = GameObject.FindWithTag("Static").gameObject.GetComponent("staticScript");
+	var statScr : staticScript;
+
+	try {
+		statScr = GameObject.FindWithTag("Static").gameObject.GetComponent("staticScript");
+	}
+	catch(error) {
+		statScr = null;
+	}
 
 	
 	var form = new WWWForm();
-	form.AddField("patientID", statScr.patientID);
+	form.AddField("patientID", statScr?statScr.patientID:0);
 	form.AddField("level", 1);
 	
 	var url = "http://localhost/unity/UCLHCW/newAttempt.php";

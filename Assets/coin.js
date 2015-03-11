@@ -18,13 +18,11 @@ var written : boolean;
 
 function Start () {
 	rotationSpeed = 80 + UnityEngine.Random.Range(0,40);
-    controllerScript = controller.GetComponent('controller');
-	cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
-	
+    controllerScript = controller.GetComponent('Controller');
+    cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
 }
 
 function Generate() {
-	controllerScript = controller.GetComponent('controller');
 	hasShownEffect = false;
 	lane = controllerScript.randomLane();
 	transform.position.z = controllerScript.distanceToAddCoins;
@@ -41,7 +39,6 @@ function Update () {
 	levelNumbers(3,4); //Testing 
 	
 	transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
-	var controllerScript = controller.GetComponent('controller');
 
 	if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.currentLane == lane && !hasShownEffect){
 		hasShownEffect = true;
