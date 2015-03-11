@@ -46,18 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Coin.js" />
      <Compile Include="Assets\Controller.js" />
      <Compile Include="Assets\FreeEffect\Script\FreeEffectMain.js" />
      <Compile Include="Assets\FreeEffect\Script\FreeEffectOperate.js" />
+     <Compile Include="Assets\MovingObject.js" />
+     <Compile Include="Assets\Wall.js" />
      <Compile Include="Assets\building.js" />
      <Compile Include="Assets\camera.js" />
      <Compile Include="Assets\chest.js" />
-     <Compile Include="Assets\coin.js" />
      <Compile Include="Assets\road.js" />
      <Compile Include="Assets\staticScript.js" />
      <Compile Include="Assets\userInput.js" />
      <Compile Include="Assets\wagon.js" />
-     <Compile Include="Assets\wall.js" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\ZRNAssets\license_en.txt" />
      <None Include="Assets\ZRNAssets\PQAssets\Query-Chan\Shaders\PQ_Skin.shader" />

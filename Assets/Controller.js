@@ -107,8 +107,7 @@ function Start () {
 	coin.transform.localScale = Vector3(750,750,750);
 	var newCoin = Instantiate (coin, position, rotation);
 	newCoin.transform.parent = movingPlane.transform;
-	coinScript = newCoin.AddComponent.<coin>();
-	coinScript.controller = gameObject;
+	coinScript = newCoin.AddComponent.<Coin>();
 	coinScript.lane = lane;
 	coinScript.removeEffect = coinRemoveEffect;		
 	
@@ -116,8 +115,7 @@ function Start () {
 	wall.transform.localScale = Vector3(29,35,10);
     var newWall = Instantiate (wall, position, rotation);
     newWall.transform.parent = movingPlane.transform;
-    wallScript = newWall.AddComponent.<wall>();
-    wallScript.controller = gameObject;
+    wallScript = newWall.AddComponent.<Wall>();
     wallScript.lane = walllane;
     wallCounter++;
     

@@ -1,6 +1,4 @@
-﻿#pragma strict
-
-function Start () {
+﻿function Start () {
 
 }
 
