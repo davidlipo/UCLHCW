@@ -51,6 +51,7 @@
      <Compile Include="Assets\FreeEffect\Script\FreeEffectMain.js" />
      <Compile Include="Assets\FreeEffect\Script\FreeEffectOperate.js" />
      <Compile Include="Assets\MovingObject.js" />
+     <Compile Include="Assets\UnityToPHP.js" />
      <Compile Include="Assets\Wall.js" />
      <Compile Include="Assets\building.js" />
      <Compile Include="Assets\camera.js" />

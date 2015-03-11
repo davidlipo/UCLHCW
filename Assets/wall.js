@@ -1,4 +1,4 @@
-﻿class Wall extends MovingObject {
+﻿public class Wall extends MovingObject {
 
 	private var countdownTimer : float = 1.0;
 	private var pauseTimer : int = 0;
@@ -7,7 +7,7 @@
 
 	protected override function Generate() {
 		avoid = true;
-		distanceToAddObject = controllerScript.distanceToAddWalls;
+		distanceToAddObject = 500;
 		super.Generate();
 	}
 

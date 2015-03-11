@@ -1,17 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\camera.js">
     <Files>
-      <File FileName="Assets\Controller.js" Line="161" Column="1" />
-      <File FileName="Assets\userInput.js" Line="1" Column="1" />
-      <File FileName="Assets\wagon.js" Line="1" Column="1" />
-      <File FileName="Assets\building.js" Line="1" Column="1" />
-      <File FileName="Assets\chest.js" Line="1" Column="1" />
+      <File FileName="Assets\Controller.js" Line="10" Column="23" />
       <File FileName="Assets\camera.js" Line="1" Column="1" />
       <File FileName="Assets\road.js" Line="1" Column="1" />
-      <File FileName="Assets\MovingObject.js" Line="23" Column="30" />
-      <File FileName="Assets\Coin.js" Line="10" Column="17" />
-      <File FileName="Assets\Wall.js" Line="11" Column="20" />
+      <File FileName="Assets\MovingObject.js" Line="1" Column="1" />
+      <File FileName="Assets\Coin.js" Line="15" Column="28" />
+      <File FileName="Assets\Wall.js" Line="10" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

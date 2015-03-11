@@ -36,7 +36,7 @@
 			saved = true;
 		}
 		if (transform.position.z < 5 && transform.position.z > -10 && !written) {
-		    cameraScript.send([type, laneDiff, hasBeenCompleted, laneTime.ToString()]);
+		    UnityToPHP.sendInteractionStat([type, laneDiff, hasBeenCompleted, laneTime.ToString()]);
 			written = true;
 			controllerScript.objectCount -= 1;
 		} 

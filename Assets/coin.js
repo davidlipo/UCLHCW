@@ -1,4 +1,4 @@
-﻿class Coin extends MovingObject {
+﻿public class Coin extends MovingObject {
 	private var removeEffect : ParticleSystem;
 	private var hasShownEffect : boolean = false;
 
@@ -12,7 +12,7 @@
 
 	protected override function Generate() {
 		hasShownEffect = false;
-		distanceToAddObject = controllerScript.distanceToAddCoins;
+		distanceToAddObject = 500;
 		super.Generate();
 	}
 	

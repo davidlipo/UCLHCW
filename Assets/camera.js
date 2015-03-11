@@ -31,36 +31,3 @@ function Update () {
 	}
 
 }
-
-function send(data){  //Put this here for now
-
-	var form = new WWWForm();
-
-	form.AddField("typeOfObject", data[0]);
-	form.AddField("lane", data[1]);
-	form.AddField("checkCollection", data[2]);
-	form.AddField("time", data[3]);
-	form.AddField("attemptID", controllerScript.attemptID);
-	
-	var url = "http://localhost/unity/UCLHCW/storeData.php";
-	var w = WWW(url, form);
-
-    yield w;
-
-    if(w.error)
-    {
-        Debug.Log(w.error);
-    }
-    else
-    {
-        Debug.Log(w.text);
-        Debug.Log("Data has been sent to mysql");
-    }
-
-}
-
-
-
-
-
- 

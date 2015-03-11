@@ -24,11 +24,6 @@ var playing : boolean = true;
 var leftLanePosition : int = -57;
 var laneWidth = 87;
 
-var distanceToAddCoins : int = 500;
-var distanceBetweenCoins : int = 500;
-
-var distanceToAddWalls : int = 500;
-var distanceBetweenWalls : int = 500;
 var wallCounter : int = 0;
 
 var lengthOfBuilding : int = 3406;
@@ -50,8 +45,6 @@ var coinWall : int = 0;
 var objectCount : int = 0;
 
 var backgroundSound : boolean = true;
-
-var attemptID : String;
 
 function Start () {
 
@@ -77,8 +70,7 @@ function Start () {
 	
 	yield w;
 	
-	attemptID = w.text;
-	Debug.Log(attemptID);
+	UnityToPHP.setAttemptID(w.text);
 
 	var i : int;
 	var rotation : Quaternion = Quaternion.identity;
