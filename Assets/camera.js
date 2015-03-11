@@ -1,5 +1,5 @@
 ﻿var controller : GameObject;
-static var speed : int;
+var speed : int;
 var movingPlane : GameObject;
 var controllerScript : Component;
 var currentLane : int;

@@ -1,11 +1,14 @@
-﻿var controller : GameObject;
+﻿public class Building extends MonoBehaviour {
 
-function Start () {
-}
+	private var controllerScript;
 
-function Update () {
-	var controllerScript = controller.GetComponent('Controller');
-	if(transform.position.z < controllerScript.initialBuildingPosition - controllerScript.lengthOfBuilding) {
-		transform.position.z = controllerScript.initialBuildingPosition + controllerScript.lengthOfBuilding;
+	private function Start() {
+		controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
+	}
+
+	private function Update() {
+		if(transform.position.z < controllerScript.initialBuildingPosition - controllerScript.lengthOfBuilding) {
+			transform.position.z = controllerScript.initialBuildingPosition + controllerScript.lengthOfBuilding;
+		}
 	}
 }

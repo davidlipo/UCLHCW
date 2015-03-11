@@ -1,11 +1,14 @@
-﻿var controller : GameObject;
+﻿public class Road extends MonoBehaviour {
 
-function Start () {
-}
+	private var controllerScript;
 
-function Update () {
-	var controllerScript = controller.GetComponent('Controller');
-	if(transform.position.z < controllerScript.initialRoadPosition - GetComponent.<Renderer>().bounds.size.z) {
-		transform.position.z = controllerScript.initialRoadPosition + GetComponent.<Renderer>().bounds.size.z;
+	private function Start() {
+		controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
+	}
+
+	private function Update() {
+		if(transform.position.z < controllerScript.initialRoadPosition - GetComponent.<Renderer>().bounds.size.z) {
+			transform.position.z = controllerScript.initialRoadPosition + GetComponent.<Renderer>().bounds.size.z;
+		}
 	}
 }

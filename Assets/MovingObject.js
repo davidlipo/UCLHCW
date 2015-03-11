@@ -5,7 +5,7 @@
 	
 	protected var distanceToAddObject;
 	
-	var lane : int;
+	protected var lane : int;
 
 	private var laneDiff : int;
 	private var currentTime : float = 0;

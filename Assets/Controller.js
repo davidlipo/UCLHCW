@@ -96,8 +96,7 @@ function Start () {
 		position = new Vector3 (-555,-223, initialBuildingPosition + i*lengthOfBuilding);
 		var newBuilding = Instantiate (building, position, rotation);
 		newBuilding.transform.parent = movingPlane.transform;
-		var buildingScript = newBuilding.AddComponent.<building>();
-		buildingScript.controller = gameObject;
+		newBuilding.AddComponent.<Building>();
 	}
 	
 	//Right
@@ -105,16 +104,14 @@ function Start () {
 		position = new Vector3 (615,-223, initialBuildingPosition + i*lengthOfBuilding);
 		newBuilding = Instantiate (building, position, rotation * Quaternion.Euler(0,180f,0));
 		newBuilding.transform.parent = movingPlane.transform;
-		buildingScript = newBuilding.AddComponent.<building>();
-		buildingScript.controller = gameObject;
+		newBuilding.AddComponent.<Building>();
 	}
 	
 	for(i = 0; i < 2; i++){
 		position = new Vector3 (30,1, initialRoadPosition + i*road.GetComponent.<Renderer>().bounds.size.z);
 		var newRoad = Instantiate (road, position, rotation);
 		newRoad.transform.parent = movingPlane.transform;
-		var roadScript = newRoad.AddComponent.<road>();
-		roadScript.controller = gameObject;
+		newRoad.AddComponent.<Road>();
 	}
 }
 
