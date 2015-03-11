@@ -59,18 +59,8 @@ function Start () {
 	catch(error) {
 		statScr = null;
 	}
-
 	
-	var form = new WWWForm();
-	form.AddField("patientID", statScr?statScr.patientID:0);
-	form.AddField("level", 1);
-	
-	var url = "http://localhost/unity/UCLHCW/newAttempt.php";
-	var w = WWW(url, form);
-	
-	yield w;
-	
-	UnityToPHP.setAttemptID(w.text);
+	UnityToPHP.setAttemptID(statScr?statScr.patientID:0);
 
 	var i : int;
 	var rotation : Quaternion = Quaternion.identity;
@@ -79,29 +69,19 @@ function Start () {
 	
 	cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
 	
-	var position : Vector3 = new Vector3 (laneX(1),2,0);
-	var newwagon = Instantiate (wagon, position, rotation);
-	newwagon.transform.parent = movingPlane.transform;
-	var wagonScript = newwagon.AddComponent.<wagon>();
-	wagonScript.controller = gameObject;
-	wagon.transform.localScale = Vector3(25,25,25);
+	var position : Vector3 = new Vector3 (30,2,0);
+	var wagon = Instantiate (wagon, position, rotation);
 	
-	position = new Vector3 (laneX(1),20,32);
-	var newChest = Instantiate (chest, position, rotation);
-	newChest.transform.parent = movingPlane.transform;
-	var chestScript = newChest.AddComponent.<chest>();
-	chestScript.controller = gameObject;
-	chest.transform.localScale = Vector3(15,15,15);
-	
-	lane = randomLane();
-	
-	position = new Vector3 (laneX(lane),20, -20);
+	position = new Vector3 (30,20,32);
+	var chest = Instantiate (chest, position, rotation);
+		
+	position = new Vector3 (0,20, -20);
 	coin.transform.localScale = Vector3(750,750,750);
 	var newCoin = Instantiate (coin, position, rotation);
 	newCoin.transform.parent = movingPlane.transform;
 	coinScript = newCoin.AddComponent.<Coin>();
-	coinScript.lane = lane;
-	coinScript.removeEffect = coinRemoveEffect;		
+	coinScript.removeEffect = coinRemoveEffect;
+	coinScript.Generate();
 	
 	position = new Vector3 (29, 0 , -20);
 	wall.transform.localScale = Vector3(29,35,10);
@@ -212,14 +192,6 @@ function Update () {
 	}
 }
 
-function randomLane(){
-	return UnityEngine.Random.Range(0,3);
-}
-
 function randomObject(){
 	return UnityEngine.Random.Range(0,2);
-}
-
-function laneX(laneNumber : int){
-	return laneWidth*laneNumber + leftLanePosition;
 }

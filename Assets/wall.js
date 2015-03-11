@@ -5,7 +5,7 @@
 
 	private var avoid : boolean;
 
-	protected override function Generate() {
+	public override function Generate() {
 		avoid = true;
 		distanceToAddObject = 500;
 		super.Generate();

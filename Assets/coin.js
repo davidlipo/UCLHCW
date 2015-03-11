@@ -5,12 +5,12 @@
 	private var rotationSpeed : int;
 	private var coinSpeed : int = 0;
 
-	protected override function Start() {
+	protected override function Awake() {
 		rotationSpeed = 80 + UnityEngine.Random.Range(0,40);
-		super.Start();
+		super.Awake();
 	}
 
-	protected override function Generate() {
+	public override function Generate() {
 		hasShownEffect = false;
 		distanceToAddObject = 500;
 		super.Generate();

@@ -7,21 +7,24 @@
 	
 	var lane : int;
 
-	var laneDiff : int;
-	var currentTime : float = 0;
-	var laneTime : float;
-	var saved : boolean;
-	var written : boolean;
+	private var laneDiff : int;
+	private var currentTime : float = 0;
+	private var laneTime : float;
+	private var saved : boolean;
+	private var written : boolean;
+	
+	private var laneWidth : int;
 
-	protected function Start() {
+	protected function Awake() {
 	    controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
 	    cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
+	    laneWidth = controllerScript.laneWidth;
 	}
 
-	protected function Generate() {
-		lane = controllerScript.randomLane();
+	public function Generate() {
+		lane = RandomLane();
 		transform.position.z = distanceToAddObject;
-		transform.position.x = controllerScript.laneX(lane);
+		transform.localPosition.x = PositionLane(lane);
 		laneDiff = lane - cameraScript.currentLane;
 	    currentTime = 0;
 	    saved = false;
@@ -40,5 +43,13 @@
 			written = true;
 			controllerScript.objectCount -= 1;
 		} 
+	}
+	
+	private function PositionLane(lane) {
+		return -laneWidth + laneWidth*lane;
+	}
+	
+	function RandomLane(){
+		return UnityEngine.Random.Range(0,3);
 	}
 }
