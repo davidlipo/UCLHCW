@@ -13,6 +13,14 @@
     background-size: auto;
 }
 
+.formContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+}
+
 #image {
     float: left;
     width: 6.231658%;
@@ -45,7 +53,7 @@
     height: 80px;
     font-size: 2.3em;
     margin-left: auto;
-    margin-top: 36.92223%;
+    margin-top: 30%;
     clear: none;
     width: 25.809336%;
     border-top-left-radius: 0px;
@@ -69,3 +77,84 @@
     margin-right: auto;
 }
 
+#form {
+    float: none;
+    height: 80px;
+    font-size: 1.5em;
+    margin-left: 2%;
+    margin-top: 8%;
+    clear: none;
+    width: 12.809336%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    font-family: 'Walkway UltraBold';
+    color: rgb(0, 114, 124);
+    font-style: normal;
+    font-weight: 600;
+    display: block;
+    margin-right: auto;
+}
+
+#smallButton {
+    float: none;
+    height: 40px;
+    font-size: 1.1em;
+    margin-left: 0%;
+    margin-top: 5%;
+    clear: none;
+    width: 121%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    -webkit-box-shadow: rgb(0, 0, 0) -2px -2px 1px 0px inset;
+    box-shadow: rgb(0, 0, 0) -2px -2px 1px 0px inset;
+    font-family: 'Walkway UltraBold';
+    color: rgb(0, 114, 124);
+    font-style: normal;
+    font-weight: 500;
+    display: block;
+    border-top-color: rgba(0, 114, 124, 0.780392);
+    border-left-color: rgba(0, 114, 124, 0.780392);
+    background-color: rgb(255, 255, 255);
+    margin-right: auto;
+}
+
+#smallButton:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 114, 124, 0.65098);
+}
+
+#dropdown {
+    float: none;
+    height: 40px;
+    font-size: 1.1em;
+    margin-left: 2%;
+    margin-top: 5%;
+    clear: none;
+    width: 15%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    font-family: 'Walkway UltraBold';
+    color: rgb(0, 114, 124);
+    font-style: normal;
+    font-weight: 600;
+    display: block;
+    margin-right: auto;
+}
