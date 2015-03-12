@@ -1,9 +1,9 @@
-﻿public class Camera extends MonoBehaviour {
+﻿public class Player extends MonoBehaviour {
 	private var speed : int;
 	private var movingPlane : GameObject;
 	private var controllerScript : Component;
-	private var currentLane : int;
 	private var aimLane : int;
+	public var currentLane : int;
 
 	private var leftLanePosition : int = 117;
 
@@ -16,6 +16,7 @@
 	public function Start() {
 		controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
 		transform.position = Vector3(30,40,20);
+		movingPlane = GameObject.FindWithTag('MovingPlane').gameObject;
 	}
 
 	public function Update() {

@@ -1,7 +1,7 @@
-﻿class MovingObject extends MonoBehaviour {
+﻿public class MovingObject extends MonoBehaviour {
 
 	protected var controllerScript;
-	protected var cameraScript : Camera;
+	protected var cameraScript : Player;
 	
 	protected var distanceToAddObject;
 	
@@ -17,7 +17,7 @@
 
 	protected function Awake() {
 	    controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
-	    cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
+	    cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('Player');
 	    laneWidth = controllerScript.laneWidth;
 	}
 

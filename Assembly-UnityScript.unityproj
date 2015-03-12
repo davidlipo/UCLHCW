@@ -46,13 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BackgroundObject.js" />
      <Compile Include="Assets\Building.js" />
-     <Compile Include="Assets\Camera.js" />
      <Compile Include="Assets\Coin.js" />
      <Compile Include="Assets\Controller.js" />
      <Compile Include="Assets\FreeEffect\Script\FreeEffectMain.js" />
      <Compile Include="Assets\FreeEffect\Script\FreeEffectOperate.js" />
      <Compile Include="Assets\MovingObject.js" />
+     <Compile Include="Assets\Player.js" />
      <Compile Include="Assets\Road.js" />
      <Compile Include="Assets\StaticScript.js" />
      <Compile Include="Assets\UnityToPHP.js" />
