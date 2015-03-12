@@ -38,7 +38,7 @@ public class Controller extends MonoBehaviour {
 		currentTime = 0.0;
 		endTime = 60;
 		
-		UnityToPHP.setAttemptID(StaticScript.getPatientID());
+		StartCoroutine(UnityToPHP.setAttemptID(StaticScript.getPatientID()));
 
 		var i : int;
 		var rotation : Quaternion = Quaternion.identity;

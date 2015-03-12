@@ -39,7 +39,7 @@
 			saved = true;
 		}
 		if (transform.position.z < 5 && transform.position.z > -10 && !written) {
-		    UnityToPHP.sendInteractionStat([type, laneDiff, hasBeenCompleted, laneTime.ToString()]);
+		    StartCoroutine(UnityToPHP.sendInteractionStat([type, laneDiff, hasBeenCompleted, laneTime.ToString()]));
 			written = true;
 			controllerScript.objectCount -= 1;
 		} 
