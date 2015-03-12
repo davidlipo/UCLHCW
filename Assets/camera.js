@@ -1,38 +1,39 @@
-﻿var controller : GameObject;
-var speed : int;
-var movingPlane : GameObject;
-var controllerScript : Component;
-var currentLane : int;
-var aimLane : int;
+﻿public class Camera extends MonoBehaviour {
+	private var speed : int;
+	private var movingPlane : GameObject;
+	private var controllerScript : Component;
+	private var currentLane : int;
+	private var aimLane : int;
 
-var leftLanePosition : int = 117;
+	private var leftLanePosition : int = 117;
 
-function Awake() {
-	speed = 100;
-	currentLane = 1;
-	aimLane = currentLane;
-}
-
-function Start() {
-	controllerScript = controller.GetComponent('Controller');
-	transform.position = Vector3(30,40,20);
-}
-
-function Update() {
-	//Moving forward
-	if (controllerScript.playing) {
-		movingPlane.transform.Translate (Vector3(0,0,-1) * Time.deltaTime*speed);
-		
-		if(aimLane == currentLane) {
-			if (Input.GetKey (KeyCode.LeftArrow) && currentLane > 0) aimLane = currentLane - 1;
-			if (Input.GetKey (KeyCode.RightArrow) && currentLane < controllerScript.numberOfLanes - 1) aimLane = currentLane + 1;
-		}
-		else if(movingPlane.transform.position.x == leftLanePosition - controllerScript.laneWidth*aimLane) {
-			currentLane = aimLane;
-		}
-		else {
-			movingPlane.transform.position = Vector3.MoveTowards(movingPlane.transform.position, Vector3(leftLanePosition - aimLane*controllerScript.laneWidth,movingPlane.transform.position.y,movingPlane.transform.position.z),   speed*Time.deltaTime);
-		}
+	public function Awake() {
+		speed = 100;
+		currentLane = 1;
+		aimLane = currentLane;
 	}
 
+	public function Start() {
+		controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
+		transform.position = Vector3(30,40,20);
+	}
+
+	public function Update() {
+		//Moving forward
+		if (controllerScript.playing) {
+			movingPlane.transform.Translate (Vector3(0,0,-1) * Time.deltaTime*speed);
+			
+			if(aimLane == currentLane) {
+				if (Input.GetKey (KeyCode.LeftArrow) && currentLane > 0) aimLane = currentLane - 1;
+				if (Input.GetKey (KeyCode.RightArrow) && currentLane < controllerScript.numberOfLanes - 1) aimLane = currentLane + 1;
+			}
+			else if(movingPlane.transform.position.x == leftLanePosition - controllerScript.laneWidth*aimLane) {
+				currentLane = aimLane;
+			}
+			else {
+				movingPlane.transform.position = Vector3.MoveTowards(movingPlane.transform.position, Vector3(leftLanePosition - aimLane*controllerScript.laneWidth,movingPlane.transform.position.y,movingPlane.transform.position.z),   speed*Time.deltaTime);
+			}
+		}
+
+	}
 }

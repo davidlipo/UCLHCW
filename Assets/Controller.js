@@ -37,7 +37,6 @@ var coinArrayIndex : int = 0;
 var wallFinalArray = new Array(10);
 var wallArrayIndex : int = 0;
 
-var cameraScript : camera;
 var coinScript;
 var wallScript;
 
@@ -50,25 +49,16 @@ function Start () {
 
 	currentTime = 0.0;
 	endTime = 60;
-
-	var statScr : staticScript;
-
-	try {
-		statScr = GameObject.FindWithTag("Static").gameObject.GetComponent("staticScript");
-	}
-	catch(error) {
-		statScr = null;
-	}
 	
-	UnityToPHP.setAttemptID(statScr?statScr.patientID:0);
+	Debug.Log("A");
+	UnityToPHP.setAttemptID(StaticScript.getPatientID());
+	Debug.Log("B");
 
 	var i : int;
 	var rotation : Quaternion = Quaternion.identity;
 	var lane : int;
 	var walllane : int;
-	
-	cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('camera');
-	
+		
 	var position : Vector3 = new Vector3 (30,2,0);
 	var wagon = Instantiate (wagon, position, rotation);
 	

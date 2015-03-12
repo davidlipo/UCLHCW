@@ -1,7 +1,7 @@
 ﻿class MovingObject extends MonoBehaviour {
 
 	protected var controllerScript;
-	protected var cameraScript : camera;
+	protected var cameraScript : Camera;
 	
 	protected var distanceToAddObject;
 	
@@ -32,7 +32,7 @@
 	   	controllerScript.objectCount += 1;
 	}
 
-	protected function UpdateAndSave(type, hasBeenCompleted) {
+	protected function UpdateAndSave(type : String, hasBeenCompleted : boolean) {
 	    currentTime += Time.deltaTime;
 		if (cameraScript.currentLane == lane && !saved) {
 			laneTime = currentTime;
@@ -45,7 +45,7 @@
 		} 
 	}
 	
-	private function PositionLane(lane) {
+	private function PositionLane(lane : int) {
 		return -laneWidth + laneWidth*lane;
 	}
 	

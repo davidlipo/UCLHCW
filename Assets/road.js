@@ -2,11 +2,11 @@
 
 	private var controllerScript;
 
-	private function Start() {
+	public function Start() {
 		controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
 	}
 
-	private function Update() {
+	public function Update() {
 		if(transform.position.z < controllerScript.initialRoadPosition - GetComponent.<Renderer>().bounds.size.z) {
 			transform.position.z = controllerScript.initialRoadPosition + GetComponent.<Renderer>().bounds.size.z;
 		}

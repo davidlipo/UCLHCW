@@ -1,15 +1,11 @@
-﻿#pragma strict
+﻿public static class StaticScript {
+	private var patientID:String = "";
 
-var patientID:String;
-
-function Start () {
-
-}
-
-function Update () {
-
-}
-
-function Awake() {
-	DontDestroyOnLoad(this);
+	public function setPatientID(ID : String) {
+		patientID = ID;
+	}
+	
+	public function getPatientID() : String {
+		return patientID;
+	}
 }
