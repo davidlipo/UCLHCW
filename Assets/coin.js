@@ -12,7 +12,7 @@
 
 	public override function Generate() {
 		hasShownEffect = false;
-		distanceToAddObject = 500;
+		distanceToAddObject = 1000;
 		super.Generate();
 	}
 	
@@ -21,10 +21,9 @@
 		
 		transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
 
-		if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.currentLane == lane && !hasShownEffect){
+		if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane && !hasShownEffect){
 			hasShownEffect = true;
-			controllerScript.coinCounter+=1;
-			Debug.Log(controllerScript.coinCounter);
+			controllerScript.addToScore(1);
 			var effect = Instantiate (removeEffect, transform.position, Quaternion.identity);
 			effect.transform.localScale = Vector3(2,2,2);
 			effect.transform.parent = transform;

@@ -3,7 +3,9 @@
 	private var movingPlane : GameObject;
 	private var controllerScript : Component;
 	private var aimLane : int;
-	public var currentLane : int;
+	private var currentLane : int;
+	
+	private var numberOfLanes : int = 3;
 
 	private var leftLanePosition : int = 117;
 
@@ -21,12 +23,12 @@
 
 	public function Update() {
 		//Moving forward
-		if (controllerScript.playing) {
+		if (controllerScript.isPlaying()) {
 			movingPlane.transform.Translate (Vector3(0,0,-1) * Time.deltaTime*speed);
 			
 			if(aimLane == currentLane) {
 				if (Input.GetKey (KeyCode.LeftArrow) && currentLane > 0) aimLane = currentLane - 1;
-				if (Input.GetKey (KeyCode.RightArrow) && currentLane < controllerScript.numberOfLanes - 1) aimLane = currentLane + 1;
+				if (Input.GetKey (KeyCode.RightArrow) && currentLane < numberOfLanes - 1) aimLane = currentLane + 1;
 			}
 			else if(movingPlane.transform.position.x == leftLanePosition - controllerScript.laneWidth*aimLane) {
 				currentLane = aimLane;
@@ -35,6 +37,9 @@
 				movingPlane.transform.position = Vector3.MoveTowards(movingPlane.transform.position, Vector3(leftLanePosition - aimLane*controllerScript.laneWidth,movingPlane.transform.position.y,movingPlane.transform.position.z),   speed*Time.deltaTime);
 			}
 		}
-
+	}
+	
+	public function getCurrentLane() : int {
+		return currentLane;
 	}
 }

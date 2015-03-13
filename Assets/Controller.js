@@ -7,16 +7,12 @@ public class Controller extends MonoBehaviour {
 	public var wall : GameObject;
 	public var wagon : GameObject;
 	public var chest : GameObject;
+	public var coinRemoveEffect : ParticleSystem;
 	private var currentTime : float = 0.0;
 	private var endTime : float = 0.0;
 
-	public var coinRemoveEffect : ParticleSystem;
-
-	public var coinCounter : int = 0;
-
-	public var numberOfLanes : int = 3;
-
-	public var playing : boolean = true;
+	private var score : int = 0;
+	private var playing : boolean = true;
 
 	public var laneWidth = 87;
 
@@ -28,22 +24,15 @@ public class Controller extends MonoBehaviour {
 	private var coinScript;
 	private var wallScript;
 
-	private var coinWall : int = 0;
-	public var objectCount : int = 0;
-
-	private var backgroundSound : boolean = true;
-
-	public function Start () {
+	public function Start() {
 
 		currentTime = 0.0;
 		endTime = 60;
 		
 		StartCoroutine(UnityToPHP.setAttemptID(StaticScript.getPatientID()));
 
-		var i : int;
 		var rotation : Quaternion = Quaternion.identity;
 		var lane : int;
-		var walllane : int;
 			
 		var position : Vector3 = new Vector3 (30,2,0);
 		Instantiate (wagon, position, rotation);
@@ -57,32 +46,29 @@ public class Controller extends MonoBehaviour {
 		newCoin.transform.parent = movingPlane.transform;
 		coinScript = newCoin.AddComponent.<Coin>();
 		coinScript.removeEffect = coinRemoveEffect;
-		coinScript.Generate();
 		
 		position = new Vector3 (29, 0 , -20);
 		wall.transform.localScale = Vector3(29,35,10);
 	    var newWall = Instantiate (wall, position, rotation);
 	    newWall.transform.parent = movingPlane.transform;
 	    wallScript = newWall.AddComponent.<Wall>();
-	    wallScript.lane = walllane;
 	    
-		//Left
-		for(i = 0; i < 2; i++){
-			position = new Vector3 (-555,-223, initialBuildingPosition + i*lengthOfBuilding);
+	    regenerateObject();
+	    
+		var positionY = -223;
+		for(var i = 0; i < 2; i++){
+			var positionZ = initialBuildingPosition + i*lengthOfBuilding;
+			//Left
+			position = new Vector3 (-555,positionY, positionZ);
 			var newBuilding = Instantiate (building, position, rotation);
 			newBuilding.transform.parent = movingPlane.transform;
 			newBuilding.AddComponent.<Building>();
-		}
-		
-		//Right
-		for(i = 0; i < 2; i++){
-			position = new Vector3 (615,-223, initialBuildingPosition + i*lengthOfBuilding);
+			//Right
+			position = new Vector3 (615,positionY, positionZ);
 			newBuilding = Instantiate (building, position, rotation * Quaternion.Euler(0,180f,0));
 			newBuilding.transform.parent = movingPlane.transform;
 			newBuilding.AddComponent.<Building>();
-		}
-		
-		for(i = 0; i < 2; i++){
+			//Road
 			position = new Vector3 (30,1, initialRoadPosition + i*road.GetComponent.<Renderer>().bounds.size.z);
 			var newRoad = Instantiate (road, position, rotation);
 			newRoad.transform.parent = movingPlane.transform;
@@ -90,36 +76,45 @@ public class Controller extends MonoBehaviour {
 		}
 	}
 
-	public function Update () {
-
-		if (!backgroundSound){
-			GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Play();
-			backgroundSound = true;
-		}
-
+	public function Update() {
 		currentTime += Time.deltaTime;
-		
-		if (objectCount == 0) {
-			coinWall = randomObject();
-			if(coinWall == 0){
-				coinScript.Generate();
-			}
-			else {
-				wallScript.Generate();
-			}
-		}
 
 		if(currentTime >= endTime){
-			playing = false;
+			pause();
 		}
-
-		if(!playing){
-			GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Stop();
-			backgroundSound = false;
+	}
+	
+	public function regenerateObject() {
+		switch(randomObject()) {
+			case 0:
+				coinScript.Generate();
+			break;
+			case 1:
+				wallScript.Generate();
+			break;
 		}
 	}
 
-	public function randomObject(){
+	private function randomObject() {
 		return UnityEngine.Random.Range(0,2);
+	}
+	
+	public function isPlaying() : boolean {
+		return playing;
+	}
+	
+	public function pause() {
+		playing = false;
+		GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Stop();
+	}
+	
+	public function play() {
+		playing = true;
+		GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Play();
+	}
+	
+	public function addToScore(points : int) : int {
+		score += points;
+		return score;
 	}
 }

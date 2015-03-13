@@ -1,5 +1,4 @@
 ﻿public class Wall extends MovingObject {
-
 	private var countdownTimer : float = 1.0;
 	private var pauseTimer : int = 0;
 
@@ -7,7 +6,7 @@
 
 	public override function Generate() {
 		avoid = true;
-		distanceToAddObject = 500;
+		distanceToAddObject = 1000;
 		super.Generate();
 	}
 
@@ -17,16 +16,16 @@
 				Debug.Log('countdown' + pauseTimer);			
 				pauseTimer--;
 				if (pauseTimer == 0) {
-					controllerScript.playing = true;
+					controllerScript.play();
 				}
 			}
 		}
 
-		if(transform.position.z < 30 && transform.position.z > 0 && cameraScript.currentLane == lane){
+		if(transform.position.z < 30 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane){
 			controllerScript.coinCounter-=1;
 			Debug.Log(controllerScript.coinCounter);
 	        transform.position.z = -5;
-	        controllerScript.playing = false;
+	        controllerScript.pause();
 	        avoid = false;
 	        pauseTimer = 3;
 		}
