@@ -8,10 +8,11 @@ $arrow = ">";
 
 $queryAttempt = mysqli_query($link, "SELECT * FROM attempts WHERE attemptID = '$attemptID'");
 $resAttempt = mysqli_fetch_assoc($queryAttempt);
-$level = $resAttempt['level'];
+$levelLeft = $resAttempt['levelLeft'];
+$levelRight = $resAttempt['levelRight'];
 
-$leftLevel = $level + levelsToProgress($level, "<");
-$rightLevel = $level + levelsToProgress($level, ">");
+$leftLevel = $levelLeft + levelsToProgress($levelLeft, "<");
+$rightLevel = $levelRight + levelsToProgress($levelRight, ">");
 
 echo $leftLevel . "+" . $rightLevel;
 

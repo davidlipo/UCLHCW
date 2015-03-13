@@ -6,7 +6,8 @@
 	public function setAttemptID(patientID : String) {
 		var form : WWWForm = new WWWForm();
 		form.AddField("patientID", patientID);
-		form.AddField("level", 1);
+		form.AddField("levelLeft", 1);
+		form.AddField("levelRight", 1);
 		
 		var url : String = path + "newAttempt.php";
 		var w : WWW = WWW(url, form);
