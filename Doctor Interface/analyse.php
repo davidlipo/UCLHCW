@@ -11,8 +11,23 @@
 //            option.text = x;
 //            y.add(option);
 //        }
-    
+        var patientID ="";
+        function drawGraph()
+        {
+            $("input[type='text']").each(function(){
+            patientID +=  $(this).val();
+            });            
+            alert("<?php leftGraph($patientID); ?>");
+            var patientID ="";
+        }
     </script>
+    
+    <?php
+        function leftGraph($ID)
+        {
+
+        }
+    ?>
     
     <head>
 	<link rel="stylesheet" href="boilerplate.css">
@@ -26,14 +41,14 @@
         <img id="image" src="img/uclh.png" class="image" />
         <img id="image1" src="img/uclh%20(1).png" class="image" />
 
-        <img STYLE="position:absolute; TOP:20%; LEFT:25%; WIDTH:30%; HEIGHT:30%" src="bargraph.php" >
-        <img STYLE="position:absolute; TOP:20%; LEFT:60%; WIDTH:30%; HEIGHT:30%" src="bargraph.php" >
+        <img STYLE="position:absolute; TOP:40%; LEFT:25%; WIDTH:30%; HEIGHT:30%" src="bargraph.php" >
+        <img STYLE="position:absolute; TOP:40%; LEFT:60%; WIDTH:30%; HEIGHT:30%" src="bargraph.php" >
         
-        <div id="formContainer" class="formContainer clearfix"->
-            <form id= "form">
+        <div id="formContainer" class="formContainer clearfix">
+            <form id= "form" method="post" action="analyse.php">
                 Patient ID:<br>
                 <input type="text" name="patientID">
-                <input id="smallButton" type="button" value="Find">
+                <input id="smallButton" type="button" value="Find" onclick="drawGraph()">
                 <br>
                 <label for="left level">Left Level</label>
                 <select name="levels" id="dropdown">
