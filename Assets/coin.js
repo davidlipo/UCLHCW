@@ -18,7 +18,8 @@
 	}
 	
 	public function Update() {
-		levelNumbers(3,4); //Testing 
+		
+		levelNumbers(UnityToPHP.getLeftLevel(), UnityToPHP.getRightLevel()); 
 		
 		transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
 

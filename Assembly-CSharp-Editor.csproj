@@ -54,7 +54,6 @@
      <Compile Include="Assets\OVR\Editor\OVRPrefabs.cs" />
      <Compile Include="Assets\OVR\Editor\OVRShimLoader.cs" />
      <Compile Include="Assets\OVR\Editor\OVRUGUIEditor.cs" />
-     <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\ZRNAssets\license_en.txt" />
      <None Include="Assets\ZRNAssets\PQAssets\Query-Chan\Shaders\PQ_Skin.shader" />
      <None Include="Assets\ZRNAssets\license_jp.txt" />

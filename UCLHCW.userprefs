@@ -1,15 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Controller.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UnityToPHP.js">
     <Files>
-      <File FileName="Assets/Controller.js" Line="155" Column="38" />
+      <File FileName="Assets/wall.js" Line="25" Column="36" />
+      <File FileName="Assets/Controller.js" Line="48" Column="1" />
       <File FileName="Assets/Player.js" Line="1" Column="1" />
       <File FileName="Assets/BackgroundObject.js" Line="1" Column="1" />
-      <File FileName="Assets/coin.js" Line="1" Column="1" />
+      <File FileName="Assets/coin.js" Line="22" Column="72" />
       <File FileName="Assets/AlarmClock/Scripts/ClockScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/MovingObject.js" Line="1" Column="1" />
-      <File FileName="Assets/road.js" Line="6" Column="3" />
-      <File FileName="Assets/wall.js" Line="1" Column="1" />
+      <File FileName="Assets/MovingObject.js" Line="40" Column="13" />
+      <File FileName="Assets/road.js" Line="1" Column="1" />
+      <File FileName="Assets/userInput.js" Line="9" Column="1" />
+      <File FileName="Assets/UnityToPHP.js" Line="15" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -54,7 +54,6 @@
      <Compile Include="Assets\OVR\Editor\OVRPrefabs.cs" />
      <Compile Include="Assets\OVR\Editor\OVRShimLoader.cs" />
      <Compile Include="Assets\OVR\Editor\OVRUGUIEditor.cs" />
-     <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\ZRNAssets\license_en.txt" />
      <None Include="Assets\ZRNAssets\PQAssets\Query-Chan\Shaders\PQ_Skin.shader" />
      <None Include="Assets\ZRNAssets\license_jp.txt" />
@@ -68,7 +67,7 @@
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\ZRNAssets\PQAssets\license_en.txt" />
  <Reference Include="Assembly-UnityScript">
- <HintPath>/Users/danyaalmasood/Desktop/UCL/UCLHCW/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>/Applications/XAMPP/xamppfiles/htdocs/unity/UCLHCW/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

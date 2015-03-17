@@ -1,5 +1,7 @@
 public class Controller extends MonoBehaviour {
 
+	public var canStartGame : boolean = false;
+
 	public var coin : GameObject;
 	public var building : GameObject;
 	public var movingPlane : GameObject;
@@ -41,16 +43,17 @@ public class Controller extends MonoBehaviour {
 		currentTime = 0.0;
 		endTime = 60;
 		
-		StartCoroutine(UnityToPHP.setAttemptID(StaticScript.getPatientID()));
+		yield StartCoroutine(UnityToPHP.loadLevel());
+		yield StartCoroutine(UnityToPHP.setAttemptID());
 
 		var rotation : Quaternion = Quaternion.identity;
 		var lane : int;
 			
-		var position : Vector3 = new Vector3 (30,2,0);
+		var position : Vector3 = new Vector3 (30,2,14);
+		wagon.transform.localScale = Vector3(24,20,15);
 		Instantiate (wagon, position, rotation);
 		
-		position = new Vector3 (30,20,32);
-		Instantiate (chest, position, rotation);
+		Instantiate (chest);
 		
 		goldCoins.transform.localScale = Vector3(0.01,0.01,0.01);
 		coinStack = Instantiate (goldCoins);
@@ -62,7 +65,7 @@ public class Controller extends MonoBehaviour {
 		timeText = Instantiate (timerText); 
 		
 		Instantiate(levelText);
-  		levelText.GetComponent.<TextMesh>().text = "Level 1";
+  		levelText.GetComponent.<TextMesh>().text = "1";
 			
 		position = new Vector3 (0,20, -20);
 		coin.transform.localScale = Vector3(750,750,750);
@@ -97,24 +100,22 @@ public class Controller extends MonoBehaviour {
 			var newRoad = Instantiate (road, position, rotation);
 			newRoad.transform.parent = movingPlane.transform;
 			newRoad.AddComponent.<Road>();
-			
+		}
 		
-			
-		
-	}
+		canStartGame = true;
 	}
 
 	public function Update() {
-		currentTime += Time.deltaTime;
+		if(canStartGame){
+			currentTime += Time.deltaTime;
 
-		if(currentTime >= endTime){
-			pause();
+			if(currentTime >= endTime){
+				pause();
+			}
+			
+			timer -= Time.deltaTime; 
+			timeText.GetComponent.<TextMesh>().text = Mathf.RoundToInt(timer).ToString();
 		}
-		
-		timer -= Time.deltaTime; 
-		timeText.GetComponent.<TextMesh>().text = Mathf.RoundToInt(timer).ToString();
-		
-		//Debug.Log(score);
 	}
 	
 	public function regenerateObject() {
@@ -148,13 +149,26 @@ public class Controller extends MonoBehaviour {
 	
 	public function addToScore(points : int) : int {
 		score += points;
-		scoreDisplay(score);
+		scoreDisplay("add", score);
 		return score;
 	}
 	
-	public function scoreDisplay(score){
+	public function removeFromScore(points : int) : int {
+		score -= points;
+		scoreDisplay("remove", score);
+		return score;
+	}
+	
+	public function scoreDisplay(type, score){
 		
-		coinStack.transform.localScale += Vector3(0.001F, 0.001F, 0.01F); //change depending on what fits
+		if(type == "remove"){
+			coinStack.transform.localScale -= Vector3(0.001F, 0.001F, 0.01F);
+		}
+		
+		else{
+			coinStack.transform.localScale += Vector3(0.001F, 0.001F, 0.01F); //change depending on what fits
+		}
+		
 		counterText.GetComponent.<TextMesh>().text = "x " + score.ToString();
 	}
 	

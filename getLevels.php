@@ -2,14 +2,14 @@
 
 $link = mysqli_connect("localhost", "root", "", "uclvr");
 
-$attemptID = $_GET['attemptID'];
+$patientID = $_POST['patientID'];
 
-$arrow = ">";
 
-$queryAttempt = mysqli_query($link, "SELECT * FROM attempts WHERE attemptID = '$attemptID'");
-$resAttempt = mysqli_fetch_assoc($queryAttempt);
-$levelLeft = $resAttempt['levelLeft'];
-$levelRight = $resAttempt['levelRight'];
+$queryPatient = mysqli_query($link, "SELECT * FROM attempts WHERE patientID = '$patientID' ORDER BY attemptID DESC LIMIT 1");
+$resPatient = mysqli_fetch_assoc($queryPatient);
+$attemptID = $resPatient['attemptID'];
+$levelLeft = $resPatient['levelLeft'];
+$levelRight = $resPatient['levelRight'];
 
 $leftLevel = $levelLeft + levelsToProgress($levelLeft, "<");
 $rightLevel = $levelRight + levelsToProgress($levelRight, ">");
@@ -25,12 +25,12 @@ function levelsToProgress($level, $arrow) {
 
 	while($res = mysqli_fetch_assoc($query)) {
 		if($res['collected'] == 1) {
-			$total += 1 - min(($res['timeTaken']*$level)/8, 1);
+			$total += 1 - min(($res['timeTaken']*$level)/16, 1);
 		}
 		$size++;
 	}
 
-	$progress = $total / $size;
+	$progress = $total / ($size == 0 ? 1 : $size);
 
 	if ($progress > 0.6) {
 		return 3;

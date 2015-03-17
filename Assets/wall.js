@@ -22,7 +22,7 @@
 		}
 
 		if(transform.position.z < 30 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane){
-			controllerScript.coinCounter-=1;
+			controllerScript.removeFromScore(1);
 			Debug.Log(controllerScript.coinCounter);
 	        transform.position.z = -5;
 	        controllerScript.pause();
