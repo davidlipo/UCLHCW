@@ -4,6 +4,7 @@
 
 	private var rotationSpeed : int;
 	private var coinSpeed : int = 0;
+	private var score : int = 0;
 
 	protected override function Awake() {
 		rotationSpeed = 80 + UnityEngine.Random.Range(0,40);
@@ -23,7 +24,7 @@
 
 		if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane && !hasShownEffect){
 			hasShownEffect = true;
-			controllerScript.addToScore(1);
+			score = controllerScript.addToScore(1);
 			var effect = Instantiate (removeEffect, transform.position, Quaternion.identity);
 			effect.transform.localScale = Vector3(2,2,2);
 			effect.transform.parent = transform;
@@ -33,6 +34,7 @@
 	
 		super.UpdateAndSave("coin", hasShownEffect);
 	}
+
 
 	private function levelNumbers(leftLevel, rightLevel){
 

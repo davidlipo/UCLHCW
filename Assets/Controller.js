@@ -7,10 +7,22 @@ public class Controller extends MonoBehaviour {
 	public var wall : GameObject;
 	public var wagon : GameObject;
 	public var chest : GameObject;
+	public var goldCoins : GameObject;
+	public var alarmClock : GameObject;
+	public var levelText : GameObject;
+	public var coinCounterText : GameObject;
+	public var timerText : GameObject;
+	
+	public var coinStack;
+	public var counterText : GameObject;
+	public var timeText : GameObject;
+	
+	public var timer : float = 60.0;
+	
 	public var coinRemoveEffect : ParticleSystem;
 	private var currentTime : float = 0.0;
 	private var endTime : float = 0.0;
-
+	
 	private var score : int = 0;
 	private var playing : boolean = true;
 
@@ -25,7 +37,7 @@ public class Controller extends MonoBehaviour {
 	private var wallScript;
 
 	public function Start() {
-
+	
 		currentTime = 0.0;
 		endTime = 60;
 		
@@ -39,6 +51,18 @@ public class Controller extends MonoBehaviour {
 		
 		position = new Vector3 (30,20,32);
 		Instantiate (chest, position, rotation);
+		
+		goldCoins.transform.localScale = Vector3(0.01,0.01,0.01);
+		coinStack = Instantiate (goldCoins);
+		
+		Instantiate (alarmClock);
+		
+		counterText = Instantiate (coinCounterText);
+		
+		timeText = Instantiate (timerText); 
+		
+		Instantiate(levelText);
+  		levelText.GetComponent.<TextMesh>().text = "Level 1";
 			
 		position = new Vector3 (0,20, -20);
 		coin.transform.localScale = Vector3(750,750,750);
@@ -73,7 +97,11 @@ public class Controller extends MonoBehaviour {
 			var newRoad = Instantiate (road, position, rotation);
 			newRoad.transform.parent = movingPlane.transform;
 			newRoad.AddComponent.<Road>();
-		}
+			
+		
+			
+		
+	}
 	}
 
 	public function Update() {
@@ -82,6 +110,11 @@ public class Controller extends MonoBehaviour {
 		if(currentTime >= endTime){
 			pause();
 		}
+		
+		timer -= Time.deltaTime; 
+		timeText.GetComponent.<TextMesh>().text = Mathf.RoundToInt(timer).ToString();
+		
+		//Debug.Log(score);
 	}
 	
 	public function regenerateObject() {
@@ -115,6 +148,15 @@ public class Controller extends MonoBehaviour {
 	
 	public function addToScore(points : int) : int {
 		score += points;
+		scoreDisplay(score);
 		return score;
 	}
+	
+	public function scoreDisplay(score){
+		
+		coinStack.transform.localScale += Vector3(0.001F, 0.001F, 0.01F); //change depending on what fits
+		counterText.GetComponent.<TextMesh>().text = "x " + score.ToString();
+	}
+	
+	
 }
