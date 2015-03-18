@@ -7,7 +7,37 @@
                 alert("One of the fields is empty");
             }
         }
+        
+        function disableOptions(v) {
+            var df = document.mainForm;
+            var graph = df.graph;
+            var patientID = df.patientID;
+            var leftLevel = df.leftLevel;
+            var rightLevel = df.rightLevel;
+            var attemptID = df.attemptID;
+            
+            if(v==3) {
+                patientID.disabled = true;
+                leftLevel.disabled = true;
+                rightLevel.disabled = true;
+                attemptID.disabled = false;
+            }
+           
+            if (v==1) {
+                rightLevel.disabled = true;
+                attemptID.disabled = true;
+                patientID.disabled = false;
+                leftLevel.disabled = false;
+            }
 
+            if (v==2) {
+                leftLevel.disabled = true;
+                attemptID.disabled = true;
+                patientID.disabled = false;
+                rightLevel.disabled = false;
+            }
+
+        }
     </script>
     
     <head>
@@ -23,9 +53,17 @@
         <img id="image1" src="img/uclh%20(1).png" class="image" />
         
         <div id="formContainer" class="formContainer clearfix">
-            <form id= "form" method="post" action="bargraph.php">
+            <form id= "form" name="mainForm" method="post" action="bargraph.php">
+                <center>Graph Type:</center>
+                <select name="graph" id="dropdown" onChange="disableOptions(this.selectedIndex);"> 
+                    <option selected disabled hidden value=''></option>
+                    <option value="indProgL">Individual Progress graph (Left)</option>
+                    <option value="indProgR">Individual Progress graph (Right)</option>
+                    <option value="indAtt">Individual Attempt graph</option>
+                </select> 
+                <br>
                 <center>Patient ID:</center>
-                <input type="text" id="editBox" name="patientID" autofocus="autofocus" onblur="checkTextField(this);">
+                <input type="text" id="editBox" name="patientID" onblur="checkTextField(this);">
                 <br>
                 <center>Attempt ID:</center>
                 <input type="text" id="editBox" name="attemptID" onblur="checkTextField(this);">
@@ -63,11 +101,6 @@
                     <option value="coin">Coin</option>
                     <option value="wall">Wall</option>
                 </select>
-                <br>
-                <center>Graph Type:</center>
-                <select name="graph" id="dropdown"> 
-                    <option value="indAtt">Individual Attempt graph</option>
-                </select> 
                 <input id="smallButton" type="submit" value="Submit">
             </form>
 

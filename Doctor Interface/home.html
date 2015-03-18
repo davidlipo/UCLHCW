@@ -12,16 +12,12 @@
     <div id="primaryContainer" class="primaryContainer clearfix">
         <img id="image" src="img/uclh.png" class="image" />
         <img id="image1" src="img/uclh%20(1).png" class="image" />
-        <a href="database.html">
-            <input id="input" type="button" value="Database"></input>
-        </a>
-        <a href="analyse.php">
-            <input id="input1" type="button" value="Analyse"></input>
-        </a>
-        <a href="options.html">
-            <input id="input2" type="button" value="Options"></input>
-        </a>
-        <input id="input3" type="button" value="Exit" onclick="self.close"></input>
+        <div id="formContainer" class="formContainer clearfix">
+        <input id="input" type="button" value="Database" onclick="location='database.html'"></input>
+        <input id="input" type="button" value="Analyse" onclick="location='analyse.php'"></input>
+        <input id="input" type="button" value="Options" onclick="location='options.html'"></input>
+        <input id="input" type="button" value="Exit" onclick="self.close();"></input>
+</div>
     </div>
     </body>
 </html>
