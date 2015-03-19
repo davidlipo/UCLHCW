@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-    <script>
-//        function addOptions(x){
-//          var select = document.getElementById('dropdown');
-//          select.options[select.options.length] = new Option(x, x);
-//            
-//            var y = document.getElementById("dropdown");
-//            var option = document.createElement("option");
-//            option.text = x;
-//            y.add(option);
-//        }
-        var patientID ="";
-        function drawGraph()
-        {
-            $("input[type='text']").each(function(){
-            patientID +=  $(this).val();
-            });            
-            alert("<?php leftGraph($patientID); ?>");
-            var patientID ="";
+    <script>       
+        function checkTextField(field) {
+            if (field.value == '') {
+                alert("One of the fields is empty");
+            }
         }
-    </script>
-    
-    <?php
-        function leftGraph($ID)
-        {
+        
+        function disableOptions(v) {
+            var df = document.mainForm;
+            var graph = df.graph;
+            var patientID = df.patientID;
+            var leftLevel = df.leftLevel;
+            var rightLevel = df.rightLevel;
+            var attemptID = df.attemptID;
+            
+            if(v==3) {
+                patientID.disabled = true;
+                leftLevel.disabled = true;
+                rightLevel.disabled = true;
+                attemptID.disabled = false;
+            }
+           
+            if (v==1) {
+                rightLevel.disabled = true;
+                attemptID.disabled = true;
+                patientID.disabled = false;
+                leftLevel.disabled = false;
+            }
+
+            if (v==2) {
+                leftLevel.disabled = true;
+                attemptID.disabled = true;
+                patientID.disabled = false;
+                rightLevel.disabled = false;
+            }
 
         }
-    ?>
+    </script>
     
     <head>
 	<link rel="stylesheet" href="boilerplate.css">
@@ -40,18 +51,25 @@
     <div id="primaryContainer" class="primaryContainer clearfix">
         <img id="image" src="img/uclh.png" class="image" />
         <img id="image1" src="img/uclh%20(1).png" class="image" />
-
-        <img STYLE="position:absolute; TOP:40%; LEFT:25%; WIDTH:30%; HEIGHT:30%" src="bargraph.php" >
-        <img STYLE="position:absolute; TOP:40%; LEFT:60%; WIDTH:30%; HEIGHT:30%" src="bargraph.php" >
         
         <div id="formContainer" class="formContainer clearfix">
-            <form id= "form" method="post" action="analyse.php">
-                Patient ID:<br>
-                <input type="text" name="patientID">
-                <input id="smallButton" type="button" value="Find" onclick="drawGraph()">
+            <form id= "form" name="mainForm" method="post" action="bargraph.php">
+                <center>Graph Type:</center>
+                <select name="graph" id="dropdown" onChange="disableOptions(this.selectedIndex);"> 
+                    <option selected disabled hidden value=''></option>
+                    <option value="indProgL">Individual Progress graph (Left)</option>
+                    <option value="indProgR">Individual Progress graph (Right)</option>
+                    <option value="indAtt">Individual Attempt graph</option>
+                </select> 
                 <br>
-                <label for="left level">Left Level</label>
-                <select name="levels" id="dropdown">
+                <center>Patient ID:</center>
+                <input type="text" id="editBox" name="patientID" onblur="checkTextField(this);">
+                <br>
+                <center>Attempt ID:</center>
+                <input type="text" id="editBox" name="attemptID" onblur="checkTextField(this);">
+                <br>
+                <center>Left Level:</center>
+                <select name="leftLevel" id="dropdown">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -64,8 +82,8 @@
                     <option value="10">10</option>
                 </select> 
                 <br>
-                <label for="right level">Right Level</label>
-                <select name="levels" id="dropdown"> 
+                <center>Right Level:</center>
+                <select name="rightLevel" id="dropdown"> 
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -77,27 +95,18 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>   
+                <br>
+                <center>Object Type:</center>
+                <select name="type" id="dropdown"> 
+                    <option value="coin">Coin</option>
+                    <option value="wall">Wall</option>
+                </select>
+                <input id="smallButton" type="submit" value="Submit">
             </form>
-           <?php
-//                if(isset($_POST['submit'])){ 
-//                    if(isset($_GET['go'])){
-//                    $PatientID=$_POST['patientID']; 
-//                    $sql_connect = new mysqli("localhost", "root", "") or die ("no DB Connection");
-//                    mysqli_select_db($sql_connect, "uclvr") or die ("DB not found"); 
-//                    $sql="SELECT level WHERE patientID=$PatientID FROM attempts";
-//                    $result=mysql_query($sql);
-//                    while($row=mysql_fetch_array($result)){ 
-//                        $level=$row['level'];
-//                        addOptions($level);
-//                    }
-//                    }
-//                }
-            ?>
+
         </div>
 
-        <a href="home.html">
-            <input id="input" type="button" value="Main menu"></input>
-        </a>
+            <input id="input" type="button" value="Main menu" onclick="location='home.html'"></input>
     </div>
     </body>
 </html>

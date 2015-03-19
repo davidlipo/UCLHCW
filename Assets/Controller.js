@@ -64,8 +64,12 @@ public class Controller extends MonoBehaviour {
 		
 		timeText = Instantiate (timerText); 
 		
+		var leftLevel = UnityToPHP.getLeftLevel();
+		var rightLevel = UnityToPHP.getRightLevel();
+		var displayLevel = (leftLevel + rightLevel) - 1;
+		levelText.GetComponent.<TextMesh>().text = displayLevel.ToString();
 		Instantiate(levelText);
-  		levelText.GetComponent.<TextMesh>().text = "1";
+  		
 			
 		position = new Vector3 (0,20, -20);
 		coin.transform.localScale = Vector3(750,750,750);
