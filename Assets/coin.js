@@ -14,6 +14,7 @@
 	public override function Generate() {
 		hasShownEffect = false;
 		distanceToAddObject = 1000;
+		controllerScript.coinCreate = true;
 		super.Generate();
 	}
 	

@@ -22,7 +22,16 @@
 	}
 
 	public function Generate() {
-		lane = RandomLane();
+		if (controllerScript.coinCreate == true){
+		    while (lane == cameraScript.getCurrentLane()){
+				lane = RandomLane();
+			}	
+		}
+		else {
+			while (lane != cameraScript.getCurrentLane()){
+				lane = RandomLane();
+			}	
+		}
 		transform.position.z = distanceToAddObject;
 		transform.localPosition.x = PositionLane(lane);
 		laneDiff = lane - cameraScript.getCurrentLane();

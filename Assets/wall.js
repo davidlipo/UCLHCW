@@ -7,6 +7,7 @@
 	public override function Generate() {
 		avoid = true;
 		distanceToAddObject = 1000;
+		controllerScript.coinCreate = false;
 		super.Generate();
 	}
 

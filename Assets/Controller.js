@@ -37,6 +37,8 @@ public class Controller extends MonoBehaviour {
 
 	private var coinScript;
 	private var wallScript;
+	
+	public var coinCreate : boolean;
 
 	public function Start() {
 	
