@@ -2,16 +2,16 @@
 require_once ('jpgraph/src/jpgraph.php');
 require_once ('jpgraph/src/jpgraph_bar.php');
 
-$attemptID = $_POST["attemptID"];
-$patientID = $_POST["patientID"];
-$leftLevel = $_POST["leftLevel"];
-$rightLevel = $_POST["rightLevel"];
-$type = $_POST["type"];
+
 $graph = $_POST["graph"];
+$type = $_POST["type"];
 
 $link = mysqli_connect("localhost", "root", "", "uclvr");
 
 if ($graph == "indAtt" && $type == "coin") {
+    
+    $attemptID = $_POST["attemptID"];
+    
     $query = mysqli_query($link, "SELECT * FROM patientStats WHERE attemptID = '$attemptID' AND type = '$type'");
 
     $dataSucc = array();
@@ -88,6 +88,9 @@ if ($graph == "indAtt" && $type == "coin") {
 }
 
 if ($graph == "indAtt" && $type == "wall") {
+    
+    $attemptID = $_POST["attemptID"];
+    
     $query = mysqli_query($link, "SELECT * FROM patientStats WHERE attemptID = '$attemptID' AND type = '$type'");
 
     $dataSucc = array();
@@ -164,6 +167,10 @@ if ($graph == "indAtt" && $type == "wall") {
 }
 
 if ($graph == "indProgL" && $type == "coin") {
+    
+    $patientID = $_POST["patientID"];
+    $leftLevel = $_POST["leftLevel"];
+    
     $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempts.attemptID = patientStats.attemptID AND patientID = '$patientID' AND type = '$type' AND levelLeft = '$leftLevel' GROUP BY ID");
 
     $dataSucc = array();
@@ -242,8 +249,12 @@ if ($graph == "indProgL" && $type == "coin") {
 }
 
 if ($graph == "indProgL" && $type == "wall") {
+    
+    $patientID = $_POST["patientID"];
+    $leftLevel = $_POST["leftLevel"];
+    
     $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempts.attemptID = patientStats.attemptID AND patientID = '$patientID' AND type = '$type' AND levelLeft = '$leftLevel' GROUP BY ID");
-
+    
     $dataSucc = array();
     $dataFail = array();
    
@@ -320,6 +331,10 @@ if ($graph == "indProgL" && $type == "wall") {
 }
 
 if ($graph == "indProgR" && $type == "coin") {
+   
+    $patientID = $_POST["patientID"];
+    $rightLevel = $_POST["rightLevel"];
+    
     $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempts.attemptID = patientStats.attemptID AND patientID = '$patientID' AND type = '$type' AND levelRight = '$rightLevel' GROUP BY ID");
 
     $dataSucc = array();
@@ -398,6 +413,10 @@ if ($graph == "indProgR" && $type == "coin") {
 }
 
 if ($graph == "indProgR" && $type == "wall") {
+   
+    $patientID = $_POST["patientID"];
+    $rightLevel = $_POST["rightLevel"];
+    
     $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempts.attemptID = patientStats.attemptID AND patientID = '$patientID' AND type = '$type' AND levelRight = '$rightLevel' GROUP BY ID");
 
     $dataSucc = array();
