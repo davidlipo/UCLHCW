@@ -14,6 +14,8 @@
 	private var written : boolean;
 	
 	private var laneWidth : int;
+	
+	private var randomNo : float;
 
 	protected function Awake() {
 	    controllerScript = GameObject.FindWithTag('GameController').gameObject.GetComponent('Controller');
@@ -23,14 +25,27 @@
 
 	public function Generate() {
 		if (controllerScript.coinCreate == true){
-		    while (lane == cameraScript.getCurrentLane()){
-				lane = RandomLane();
-			}	
-		}
+		    if (controllerScript.laneBias == 50){
+		   		while (lane == cameraScript.getCurrentLane()){
+					lane = RandomLane();
+				}
+			}				
+			else{
+				randomNo = RandomFrom100();
+				if (randomNo < controllerScript.laneBias){
+					while (lane <= cameraScript.getCurrentLane()){
+						lane = RandomLane();
+					}
+				}
+				else{
+					while (lane >= cameraScript.getCurrentLane()){
+						lane = RandomLane();
+					}
+				}
+			}		
+		}				
 		else {
-			while (lane != cameraScript.getCurrentLane()){
-				lane = RandomLane();
-			}	
+			lane = cameraScript.getCurrentLane();
 		}
 		transform.position.z = distanceToAddObject;
 		transform.localPosition.x = PositionLane(lane);
@@ -59,5 +74,9 @@
 	
 	function RandomLane(){
 		return UnityEngine.Random.Range(0,3);
+	}
+	
+	function RandomFrom100(){
+		return UnityEngine.Random.Range(1,100);
 	}
 }
