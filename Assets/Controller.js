@@ -14,10 +14,12 @@ public class Controller extends MonoBehaviour {
 	public var levelText : GameObject;
 	public var coinCounterText : GameObject;
 	public var timerText : GameObject;
+	public var countdown : GameObject;
 	
 	public var coinStack;
 	public var counterText : GameObject;
 	public var timeText : GameObject;
+	public var countdownDisplay : GameObject;
 	
 	public var timer : float = 60.0;
 	
@@ -37,6 +39,7 @@ public class Controller extends MonoBehaviour {
 
 	private var coinScript;
 	private var wallScript;
+	private var cameraScript : Player;
 
 	public function Start() {
 	
@@ -122,6 +125,33 @@ public class Controller extends MonoBehaviour {
 		}
 	}
 	
+	public function attachCountdown(){
+	
+		cameraScript = GameObject.FindWithTag('Camera').gameObject.GetComponent('Player');
+		countdownDisplay = Instantiate(countdown); 
+	 	countdownDisplay.transform.parent = cameraScript.transform;
+	 	countdownDisplay.GetComponent.<TextMesh>().text = "";
+	 	countdownDisplay.GetComponent.<TextMesh>().fontSize = 1024;
+	 	countdownDisplay.transform.localScale = Vector3(0.2,0.2,0.2);
+	 	countdownDisplay.transform.localPosition = Vector3(-5,20,50);
+	}
+	
+	public function displayCountdown(){
+ 
+ 		var timerCorrection : int = wallScript.pauseTimer - 1;
+ 		
+ 		if(timerCorrection == 0){
+ 			countdownDisplay.GetComponent.<TextMesh>().text = "";
+ 			Destroy(countdownDisplay);
+ 		}
+ 		
+ 		else{
+ 			countdownDisplay.GetComponent.<TextMesh>().text = timerCorrection.ToString();
+ 		}
+ 		
+	 	  
+ }
+ 
 	public function regenerateObject() {
 		switch(randomObject()) {
 			case 0:

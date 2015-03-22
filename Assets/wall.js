@@ -11,9 +11,10 @@
 	}
 
 	public function Update() {
-		 if (pauseTimer>0) {
+		 if (pauseTimer > 0) {
 			if (countdown()) {
-				Debug.Log('countdown' + pauseTimer);			
+				//Debug.Log('countdown' + pauseTimer);
+				controllerScript.displayCountdown();			
 				pauseTimer--;
 				if (pauseTimer == 0) {
 					controllerScript.play();
@@ -27,7 +28,8 @@
 	        transform.position.z = -5;
 	        controllerScript.pause();
 	        avoid = false;
-	        pauseTimer = 3;
+	        pauseTimer = 4;
+	       	controllerScript.attachCountdown();
 		}
 	
 		super.UpdateAndSave("wall", avoid);
