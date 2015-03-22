@@ -39,7 +39,16 @@ public class Controller extends MonoBehaviour {
 
 	private var coinScript;
 	private var wallScript;
+<<<<<<< HEAD
 	private var cameraScript : Player;
+=======
+	
+	public var coinCreate : boolean;
+	public var laneBias : float;
+	
+	private var leftLevel : int;
+	private var rightLevel : int;
+>>>>>>> origin/master
 
 	public function Start() {
 	
@@ -67,13 +76,14 @@ public class Controller extends MonoBehaviour {
 		
 		timeText = Instantiate (timerText); 
 		
-		var leftLevel = UnityToPHP.getLeftLevel();
-		var rightLevel = UnityToPHP.getRightLevel();
+		leftLevel = UnityToPHP.getLeftLevel();
+		rightLevel = UnityToPHP.getRightLevel();
 		var displayLevel = (leftLevel + rightLevel) - 1;
 		levelText.GetComponent.<TextMesh>().text = displayLevel.ToString();
 		Instantiate(levelText);
-  		
-			
+		
+		laneBias = (leftLevel/(leftLevel + rightLevel+0.0)) * 100;
+  					
 		position = new Vector3 (0,20, -20);
 		coin.transform.localScale = Vector3(750,750,750);
 		var newCoin = Instantiate (coin, position, rotation);
