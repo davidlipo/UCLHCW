@@ -6,7 +6,7 @@
 	private var levelRight : int = 0;
 	
 	public function setAttemptID() {
-		Debug.Log(levelLeft);
+		//Debug.Log(levelLeft);
 		var form : WWWForm = new WWWForm();
 		form.AddField("patientID", StaticScript.getPatientID());
 		form.AddField("levelLeft", getLeftLevel());
@@ -58,7 +58,7 @@
 		levelLeft = parseInt(res[0]);
 		levelRight = parseInt(res[1]);
 		
-		Debug.Log("Current level: Right - " + levelRight + "Left - " + levelLeft);
+		Debug.Log("Current level: Right - " + levelRight + " Left - " + levelLeft);
 	}
 	
 	public function getLeftLevel() : int {

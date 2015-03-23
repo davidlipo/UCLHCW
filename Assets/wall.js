@@ -14,7 +14,7 @@
 	public function Update() {
 		 if (pauseTimer > 0) {
 			if (countdown()) {
-				//Debug.Log('countdown' + pauseTimer);
+				Debug.Log('countdown' + pauseTimer);
 				controllerScript.displayCountdown();			
 				pauseTimer--;
 				if (pauseTimer == 0) {

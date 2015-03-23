@@ -39,18 +39,18 @@ public class Controller extends MonoBehaviour {
 
 	private var coinScript;
 	private var wallScript;
-<<<<<<< HEAD
 	private var cameraScript : Player;
-=======
+
 	
 	public var coinCreate : boolean;
 	public var laneBias : float;
 	
 	private var leftLevel : int;
 	private var rightLevel : int;
->>>>>>> origin/master
 
 	public function Start() {
+	
+		//Debug.Log(StaticScript.getPatientID());
 	
 		currentTime = 0.0;
 		endTime = 60;
@@ -127,7 +127,11 @@ public class Controller extends MonoBehaviour {
 			currentTime += Time.deltaTime;
 
 			if(currentTime >= endTime){
+				//Debug.Log("TEST");
 				pause();
+				if (Input.GetKeyDown ("space")){
+					Application.LoadLevel("game"); //Restarts the game
+				} 
 			}
 			
 			timer -= Time.deltaTime; 

@@ -10,7 +10,7 @@
 	private var leftLanePosition : int = 117;
 
 	public function Awake() {
-		speed = 300;
+		speed = 100;
 		currentLane = 1;
 		aimLane = currentLane;
 	}
