@@ -15,13 +15,14 @@ public class Controller extends MonoBehaviour {
 	public var coinCounterText : GameObject;
 	public var timerText : GameObject;
 	public var countdown : GameObject;
+	public var restartImage : GameObject;
 	
 	public var coinStack;
 	public var counterText : GameObject;
 	public var timeText : GameObject;
 	public var countdownDisplay : GameObject;
 	
-	public var timer : float = 60.0;
+	public var timer : float = 60.0; 
 	
 	public var coinRemoveEffect : ParticleSystem;
 	private var currentTime : float = 0.0;
@@ -29,6 +30,7 @@ public class Controller extends MonoBehaviour {
 	
 	private var score : int = 0;
 	private var playing : boolean = true;
+	private var endGame : boolean = true;
 
 	public var laneWidth = 87;
 
@@ -129,6 +131,7 @@ public class Controller extends MonoBehaviour {
 			if(currentTime >= endTime){
 				//Debug.Log("TEST");
 				pause();
+				restart();
 				if (Input.GetKeyDown ("space")){
 					Application.LoadLevel("game"); //Restarts the game
 				} 
@@ -137,6 +140,14 @@ public class Controller extends MonoBehaviour {
 			timer -= Time.deltaTime; 
 			timeText.GetComponent.<TextMesh>().text = Mathf.RoundToInt(timer).ToString();
 		}
+	}
+	
+	public function restart(){
+	
+	if(endGame){
+		Instantiate(restartImage);
+		endGame = false;
+	}
 	}
 	
 	public function attachCountdown(){
@@ -155,12 +166,15 @@ public class Controller extends MonoBehaviour {
  		var timerCorrection : int = wallScript.pauseTimer - 1;
  		
  		if(timerCorrection == 0){
+ 			canStartGame = true;
  			countdownDisplay.GetComponent.<TextMesh>().text = "";
  			Destroy(countdownDisplay);
  		}
  		
  		else{
+ 	
  			countdownDisplay.GetComponent.<TextMesh>().text = timerCorrection.ToString();
+ 			
  		}
  		
 	 	  

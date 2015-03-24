@@ -30,6 +30,7 @@
 	        controllerScript.pause();
 	        avoid = false;
 	        pauseTimer = 4;
+	        controllerScript.canStartGame = false;
 	       	controllerScript.attachCountdown();
 		}
 	

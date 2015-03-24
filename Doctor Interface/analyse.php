@@ -8,7 +8,7 @@
             }
         }
         
-        function disableOptions(v) {
+        /*function disableOptions(v) {
             var df = document.mainForm;
             var graph = df.graph;
             var patientID = df.patientID;
@@ -16,7 +16,7 @@
             var rightLevel = df.rightLevel;
             var attemptID = df.attemptID;
             
-            if(v==3) {
+            /*if(v==3) {
                 patientID.disabled = true;
                 leftLevel.disabled = true;
                 rightLevel.disabled = true;
@@ -35,7 +35,7 @@
                 attemptID.disabled = true;
                 patientID.disabled = false;
                 rightLevel.disabled = false;
-            }
+            }*/
 
         }
     </script>
