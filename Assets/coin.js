@@ -20,21 +20,23 @@
 	
 	public function Update() {
 		
-		levelNumbers(UnityToPHP.getLeftLevel(), UnityToPHP.getRightLevel()); 
+		if (controllerScript.isPlaying()){
+			levelNumbers(UnityToPHP.getLeftLevel(), UnityToPHP.getRightLevel()); 
 		
-		transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
+			transform.Rotate(rotationSpeed * Vector3.up * Time.deltaTime);
 
-		if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane && !hasShownEffect){
-			hasShownEffect = true;
-			score = controllerScript.addToScore(1);
-			var effect = Instantiate (removeEffect, transform.position, Quaternion.identity);
-			effect.transform.localScale = Vector3(2,2,2);
-			effect.transform.parent = transform;
-			effect.Play();
-			GetComponent.<AudioSource>().Play();
-		}
+			if(transform.position.z < 100 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane && !hasShownEffect){
+				hasShownEffect = true;
+				score = controllerScript.addToScore(1);
+				var effect = Instantiate (removeEffect, transform.position, Quaternion.identity);
+				effect.transform.localScale = Vector3(2,2,2);
+				effect.transform.parent = transform;
+				effect.Play();
+				GetComponent.<AudioSource>().Play();
+			}
 	
-		super.UpdateAndSave("coin", hasShownEffect);
+			super.UpdateAndSave("coin", hasShownEffect);
+		}
 	}
 
 
@@ -50,7 +52,6 @@
 
 	}
 
-	//TODO Coin lanes != current lane && Wall lanes == current lane
 	private function changeDifficulty(left, right){
 
 		var currentPosition = cameraScript.transform.position.x;

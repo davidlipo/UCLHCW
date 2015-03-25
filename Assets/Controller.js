@@ -125,29 +125,47 @@ public class Controller extends MonoBehaviour {
 	}
 
 	public function Update() {
+
 		if(canStartGame){
 			currentTime += Time.deltaTime;
-
+			
+			if (Input.GetKeyDown (KeyCode.JoystickButton0)){
+				pause();
+				wait();
+			}
+			
 			if(currentTime >= endTime){
 				//Debug.Log("TEST");
 				pause();
 				restart();
-				if (Input.GetKeyDown ("space")){
+				if (Input.GetKeyDown (KeyCode.JoystickButton1)){
 					Application.LoadLevel("game"); //Restarts the game
 				} 
 			}
-			
-			timer -= Time.deltaTime; 
-			timeText.GetComponent.<TextMesh>().text = Mathf.RoundToInt(timer).ToString();
+			else {			
+				timer -= Time.deltaTime; 
+				timeText.GetComponent.<TextMesh>().text = Mathf.RoundToInt(timer).ToString();
+			}
 		}
+	}
+	
+	public function wait(){
+		
+		Input.ResetInputAxes();
+		while (!Input.GetKeyDown(KeyCode.JoystickButton0)){
+			canStartGame = false;
+		    yield;
+		}
+	    play();
+	    canStartGame = true;
 	}
 	
 	public function restart(){
 	
-	if(endGame){
-		Instantiate(restartImage);
-		endGame = false;
-	}
+		if(endGame){
+			Instantiate(restartImage);
+			endGame = false;
+		}
 	}
 	
 	public function attachCountdown(){

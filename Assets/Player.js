@@ -27,8 +27,8 @@
 			movingPlane.transform.Translate (Vector3(0,0,-1) * Time.deltaTime*speed);
 			
 			if(aimLane == currentLane) {
-				if (Input.GetKey (KeyCode.LeftArrow) && currentLane > 0) aimLane = currentLane - 1;
-				if (Input.GetKey (KeyCode.RightArrow) && currentLane < numberOfLanes - 1) aimLane = currentLane + 1;
+				if (Input.GetAxis ('Horizontal') < 0 && currentLane > 0) aimLane = currentLane - 1;
+				if (Input.GetAxis ('Horizontal') > 0 && currentLane < numberOfLanes - 1) aimLane = currentLane + 1;
 			}
 			else if(movingPlane.transform.position.x == leftLanePosition - controllerScript.laneWidth*aimLane) {
 				currentLane = aimLane;
