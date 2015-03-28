@@ -26,6 +26,6 @@
 
 	private function startGame() {
 		StaticScript.setPatientID(stringToEdit);
-		Application.LoadLevel("game");
+		Application.LoadLevel("infoScreen");
 	}
 }

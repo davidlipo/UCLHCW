@@ -496,4 +496,5 @@ if ($graph == "indProgR" && $type == "wall") {
 
 // Display the graph
 $graph->Stroke();
+//end
 ?>

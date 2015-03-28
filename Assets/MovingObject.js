@@ -31,7 +31,7 @@
 		if (controllerScript.coinCreate == true){
 		    if (controllerScript.laneBias == 50){
 		   		while (lane == cameraScript.getCurrentLane()){
-		   			Debug.Log("While 1");
+		   			//Debug.Log("While 1");
 					lane = RandomLane();
 				}
 			}				
@@ -39,7 +39,7 @@
 			
 			if(cameraScript.getCurrentLane() == 0 || cameraScript.getCurrentLane() == 2){
 				while (lane == cameraScript.getCurrentLane()){
-		   			Debug.Log("While 1");
+		   			//Debug.Log("While 1");
 					lane = RandomLane();
 				}
 			
@@ -49,13 +49,13 @@
 				randomNo = RandomFrom100();
 				if (randomNo < controllerScript.laneBias){
 					while (lane <= cameraScript.getCurrentLane()){
-						Debug.Log("While 2");
+						//Debug.Log("While 2");
 						lane = RandomLane();
 					}
 				}
 				else{
 					while (lane >= cameraScript.getCurrentLane()){
-						Debug.Log("While 3");
+						//Debug.Log("While 3");
 						lane = RandomLane();
 					}
 				}
