@@ -1,6 +1,7 @@
 ﻿#pragma strict
-
-function Start () {}
+	
+function Start () {
+}
 
 function Update () {
 

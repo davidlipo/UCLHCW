@@ -56,6 +56,7 @@
      <Compile Include="Assets\UserInput.js" />
      <Compile Include="Assets\building.js" />
      <Compile Include="Assets\coin.js" />
+     <Compile Include="Assets\infoController.js" />
      <Compile Include="Assets\infoObjects.js" />
      <Compile Include="Assets\road.js" />
      <Compile Include="Assets\staticScript.js" />
