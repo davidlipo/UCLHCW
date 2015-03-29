@@ -2,7 +2,7 @@
 
 $link = mysqli_connect("localhost", "root", "", "uclvr");
 
-$patientID = $_GET['patientID'];
+$patientID = $_POST['patientID'];
 
 
 $queryPatient = mysqli_query($link, "SELECT * FROM attempts WHERE patientID = '$patientID' ORDER BY attemptID DESC LIMIT 1");
