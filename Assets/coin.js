@@ -51,6 +51,10 @@
 				}
 			}
 			super.UpdateAndSave("coin", hasShownEffect);
+			if (cameraScript.getCurrentLane() == lane && !saved) {
+				laneTime = currentTime;
+				saved = true;
+			}
 		}
 	}
 

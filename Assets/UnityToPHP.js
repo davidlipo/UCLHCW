@@ -1,7 +1,7 @@
 ﻿public static class UnityToPHP {
 
 	private var attemptID : String;
-	private var path : String = "http://localhost/unity/UCLHCW/";
+	private var path : String = "http://localhost/UCLHCW/";
 	private var levelLeft : int = 0;
 	private var levelRight : int = 0;
 	
