@@ -1,7 +1,6 @@
 ﻿public class Wall extends MovingObject {
 	private var countdownTimer : float = 1.0;
 	private var pauseTimer : int = 0;
-
 	private var avoid : boolean;
 
 	public override function Generate() {
@@ -14,7 +13,7 @@
 	public function Update() {
 		 if (pauseTimer > 0) {
 			if (countdown()) {
-				Debug.Log('countdown' + pauseTimer);
+				//Debug.Log('countdown' + pauseTimer);
 				controllerScript.displayCountdown();			
 				pauseTimer--;
 				if (pauseTimer == 0) {
@@ -24,8 +23,9 @@
 		}
 
 		if(transform.position.z < 30 && transform.position.z > 0 && cameraScript.getCurrentLane() == lane){
+			
+			GetComponent.<AudioSource>().Play();
 			controllerScript.removeFromScore(1);
-			Debug.Log(controllerScript.coinCounter);
 	        transform.position.z = -5;
 	        controllerScript.pause();
 	        avoid = false;

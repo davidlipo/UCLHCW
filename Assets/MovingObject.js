@@ -26,12 +26,12 @@
 	public function Generate() {
 	
 	//lane = RandomLane();
-	Debug.Log("Current lane is: " + cameraScript.getCurrentLane() + " Object lane is:  " + lane);
+	//Debug.Log("Current lane is: " + cameraScript.getCurrentLane() + " Object lane is:  " + lane);
 	
 		if (controllerScript.coinCreate == true){
+		
 		    if (controllerScript.laneBias == 50){
 		   		while (lane == cameraScript.getCurrentLane()){
-		   			//Debug.Log("While 1");
 					lane = RandomLane();
 				}
 			}				
