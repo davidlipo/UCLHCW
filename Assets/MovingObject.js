@@ -6,11 +6,11 @@
 	protected var distanceToAddObject;
 	
 	protected var lane : int;
+	protected var saved : boolean;
+	protected var currentTime : float = 0;
+	protected var laneTime : float;
 
 	private var laneDiff : int;
-	private var currentTime : float = 0;
-	private var laneTime : float;
-	private var saved : boolean;
 	private var written : boolean;
 	
 	private var laneWidth : int;
@@ -75,10 +75,6 @@
 
 	protected function UpdateAndSave(type : String, hasBeenCompleted : boolean) {
 	    currentTime += Time.deltaTime;
-		if (cameraScript.getCurrentLane() == lane && !saved) {
-			laneTime = currentTime;
-			saved = true;
-		}
 		if (transform.position.z < 5 && transform.position.z > -10 && !written) {
 		    StartCoroutine(UnityToPHP.sendInteractionStat([type, laneDiff, hasBeenCompleted, laneTime.ToString()]));
 			written = true;

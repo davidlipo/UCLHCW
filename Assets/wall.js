@@ -36,6 +36,10 @@
 		}
 	
 		super.UpdateAndSave("wall", avoid);
+		if (cameraScript.getCurrentLane() != lane && !saved) {
+			laneTime = currentTime;
+			saved = true;
+		}
 	}
 
 	private function countdown() {

@@ -18,20 +18,26 @@ echo $leftLevel . "+" . $rightLevel;
 
 function levelsToProgress($level, $arrow) {
 	global $link, $attemptID;
-	$query = mysqli_query($link, "SELECT * FROM patientStats WHERE attemptID = '$attemptID' AND type = 'coin' AND laneNo $arrow '0'");
+	$query = mysqli_query($link, "SELECT * FROM patientStats WHERE attemptID = '$attemptID' AND laneNo $arrow '0'");
 
 	$total = 0;
 	$size = 0;
 
 	while($res = mysqli_fetch_assoc($query)) {
-		if($res['collected'] == 1) {
+		if($res['collected'] == 1 && $res['type'] == "coin") {
+			$add = 1 - min(($res['timeTaken']*$level)/16, 1);
+			if(abs($res['laneNo']) == 2) {
+				$add = min($add * 2, 1);
+			}
+			$total += $add;
+		}
+		if($res['collected'] == 1 && $res['type'] == "wall") {
 			$total += 1 - min(($res['timeTaken']*$level)/16, 1);
 		}
 		$size++;
 	}
 
 	$progress = $total / ($size == 0 ? 1 : $size);
-
 	if ($progress > 0.6) {
 		return 3;
 	}
