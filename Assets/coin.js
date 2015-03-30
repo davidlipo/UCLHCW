@@ -75,6 +75,7 @@
 		//on the left
 		if(coinPosition < currentPosition){ 
 			if(coinExists){
+				coinSpawn.volume = 1.0;
 				coinSpawn.panStereo = -1.0;
 			}
 			coinSpeed = left;
@@ -84,6 +85,7 @@
 		//on the right
 		else if(coinPosition > currentPosition){
 			if(coinExists){
+				coinSpawn.volume = 1.0;
 				coinSpawn.panStereo = 1.0;
 			}
 			coinSpeed = right;
@@ -92,10 +94,15 @@
 		
 		else{
 			if(coinExists){
-				coinSpawn.panStereo = 0.0;
+				coinSpawn.volume = 0.0;
 			}
 		}
 
 
+	}
+	
+	public function getCoinSound(){
+	
+		return coinSpawn;
 	}
 }

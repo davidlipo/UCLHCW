@@ -82,6 +82,7 @@
 		if (transform.position.z < 5 && transform.position.z > -10 && !written) {
 		    StartCoroutine(UnityToPHP.sendInteractionStat([type, laneDiff, hasBeenCompleted, laneTime.ToString()]));
 			written = true;
+			
 			controllerScript.regenerateObject();
 		} 
 	}
