@@ -61,8 +61,8 @@
 
 	private function levelNumbers(leftLevel, rightLevel){
 
-		var leftModifier = leftLevel * 10;
-		var rightModifier = rightLevel * 10; //Change modifiers depending on what works
+		var leftModifier = leftLevel * 25;
+		var rightModifier = rightLevel * 25; //Change modifiers depending on what works
 		
 		speedLeft = leftModifier;
 		speedRight = rightModifier;

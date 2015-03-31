@@ -138,7 +138,7 @@ public class Controller extends MonoBehaviour {
 				//Debug.Log("TEST");
 				pause();
 				restart();
-				if (Input.GetKeyDown (KeyCode.JoystickButton1)){
+				if (Input.GetKeyDown (KeyCode.JoystickButton1) || Input.GetKeyDown ("space")){ //CHANGE BACK 
 					Application.LoadLevel("game"); //Restarts the game
 				} 
 			}

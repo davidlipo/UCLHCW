@@ -7,7 +7,7 @@
 			startGame();
 		}
 
-		var width : int = 300;
+		var width : int = 400;
 		var height : int = 40;
 		var fontStyle = new GUIStyle();
 		var labelFont = new GUIStyle();
@@ -16,10 +16,10 @@
 	    fontStyle.fontSize = labelFont.fontSize;
 	    GUI.SetNextControlName ("patientID");
 		stringToEdit = GUI.TextField (Rect ((Screen.width - width)/2, (Screen.height - height)/2, width, height), stringToEdit, 25, fontStyle);
-		GUI.Label(Rect((Screen.width - width)/2, (Screen.height - height)/2 - height, width, height),"Enter Patient ID:", labelFont);
+		GUI.Label(Rect((Screen.width - width)/2 + width/4, (Screen.height - height)/2 - height, width, height),"Enter Patient ID", labelFont);
 		GUI.FocusControl ("patientID");
 
-		if(GUI.Button(Rect((Screen.width - width)/2, (Screen.height - height)/2 + height, width, height),"Submit")) {
+		if(GUI.Button(Rect((Screen.width - width)/2 + width/4, (Screen.height - height)/2 + height*1.5, width/2, height),"Submit")) {
 			startGame();
 		}
 	}
