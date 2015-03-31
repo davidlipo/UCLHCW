@@ -1,0 +1,77 @@
+.primaryContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+    background-image:-webkit-linear-gradient(270deg, white 21%, rgba(0, 114, 124, 0.65098) 57%, rgb(0, 114, 124) 100%);
+    background-image: linear-gradient(180deg, white 21%, rgba(0, 114, 124, 0.65098) 57%, rgb(0, 114, 124) 100%);
+    background-attachment: scroll;
+    -webkit-background-size: auto;
+    background-size: auto;
+    background-position: 0% 0%;
+    background-repeat: repeat repeat;
+}
+
+#image {
+    float: left;
+    width: 6.231658%;
+    max-width: 7.359685%;
+    height: 5.939685%;
+    margin-left: 1.100514%;
+    margin-top: 1.100514%;
+    clear: none;
+    color: rgb(0, 0, 0);
+}
+
+#image1 {
+    float: right;
+    width: 45.677045%;
+    height: 4.755245%;
+    margin-left: 0px;
+    margin-top: 1.100514%;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 1.099846%;
+}
+
+#input {
+    float: none;
+    height: 80px;
+    font-size: 2.3em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5%;
+    clear: none;
+    width: 25.809336%;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-width: 1px 0px 0px 1px;
+    -webkit-box-shadow: rgb(0, 0, 0) -2px -2px 1px 0px inset;
+    box-shadow: rgb(0, 0, 0) -2px -2px 1px 0px inset;
+    font-family: 'Walkway UltraBold';
+    color: rgb(0, 114, 124);
+    font-style: normal;
+    font-weight: 600;
+    margin-right: auto;
+    display: block;
+    border-top-color: rgba(0, 114, 124, 0.780392);
+    border-left-color: rgba(0, 114, 124, 0.780392);
+}
+
+#input:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 114, 124, 0.65098);
+}
+
+.formContainer {
+    height: auto;
+    margin-top: 12%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+}
