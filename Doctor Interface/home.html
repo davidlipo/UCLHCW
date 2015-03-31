@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html>
 
+    <script>       
+        function checkTextField(field) {
+            if (field.value == '') {
+                alert("Please enter a patient ID");
+            }
+        }
+        
+        function OnSubmitForm(){
+            if(document.mainForm.graph[0].checked == true){
+                document.mainForm.action ="indProgL.php";
+            }
+            else{
+                if(document.mainForm.graph[1].checked == true){
+                    document.mainForm.action ="indProgR.php";
+                }
+                else{
+                    if(document.mainForm.graph[2].checked == true){
+                        document.mainForm.action ="indAttempt.php";
+                    }       
+                }
+            }
+            return true;
+        }
+        
+    </script>
+    
     <head>
 	<link rel="stylesheet" href="boilerplate.css">
-	<link rel="stylesheet" href="home.css">
+	<link rel="stylesheet" href="analyse.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0">
     </head>
@@ -12,12 +38,23 @@
     <div id="primaryContainer" class="primaryContainer clearfix">
         <img id="image" src="img/uclh.png" class="image" />
         <img id="image1" src="img/uclh%20(1).png" class="image" />
+        <br>
+        <br>
+        <br>
+        <br>
         <div id="formContainer" class="formContainer clearfix">
-        <input id="input" type="button" value="Database" onclick="location='database.html'"></input>
-        <input id="input" type="button" value="Analyse" onclick="location='analyse.php'"></input>
-        <input id="input" type="button" value="Options" onclick="location='options.html'"></input>
-        <input id="input" type="button" value="Exit" onclick="self.close();"></input>
-</div>
+            <form id= "form" name="mainForm" method="post" onsubmit="return OnSubmitForm();">
+                <center>Patient ID:</center>
+                <input type="text" id="editBox" name="patientID" autofocus="autofocus" onblur="checkTextField(this);">
+                <br>
+                <input type="radio" id="radio" name="graph" value="IndProgL" checked="checked"><center>Individual Progress graph (Left)</center><br>
+                <input type="radio" id="radio" name="graph" value="IndProgR"><center>Individual Progress graph (Right)</center><br>
+                <input type="radio" id="radio" name="graph" value="IndAttempt"><center>Individual Attempt graph</center>
+                <input id="smallButton" type="submit" value="Submit">
+                <input id="smallButton" type="button" value="Exit" onclick="self.close();"></input>
+            </form>
+        </div>
+
     </div>
     </body>
 </html>
