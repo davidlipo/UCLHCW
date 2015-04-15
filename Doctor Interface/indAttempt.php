@@ -54,6 +54,7 @@
                 <center>Object Type:</center>
                 <select name="type" id="dropdown"> 
                     <option value="coin">Coin</option>
+                    <option value="wall">Wall</option>
                 </select>
                 <input id="smallButton" type="submit" value="Submit">
             </form>
