@@ -33,7 +33,7 @@ $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempt
 
     foreach ($dataSucc as $i => $value) {
         if(isset($dataFail[$i])) {
-            $data[$i] = $value / ($value + $dataFail[$i]);
+            $data[$i] = ($value / ($value + $dataFail[$i])) * 100;
         }
         else {
             $data[$i] = 1;
