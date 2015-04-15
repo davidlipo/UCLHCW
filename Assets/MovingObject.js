@@ -60,14 +60,15 @@
 					}
 				}
 			}
+			laneDiff = lane - cameraScript.getCurrentLane();
 		}		
 		}				
 		else {
 			lane = cameraScript.getCurrentLane();
+			laneDiff = lane;
 		}
 		transform.position.z = distanceToAddObject;
 		transform.localPosition.x = PositionLane(lane);
-		laneDiff = lane - cameraScript.getCurrentLane();
 	    currentTime = 0;
 	    saved = false;
 	   	written = false;

@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UserInput.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\UnityToPHP.js">
     <Files>
-      <File FileName="Assets/UserInput.js" Line="46" Column="99" />
-      <File FileName="Assets/Controller.js" Line="55" Column="5" />
-      <File FileName="Assets/UnityToPHP.js" Line="12" Column="42" />
-      <File FileName="Assets/staticScript.js" Line="1" Column="1" />
+      <File FileName="Assets\coin.js" Line="58" Column="4" />
+      <File FileName="Assets\Controller.js" Line="55" Column="5" />
+      <File FileName="Assets\UnityToPHP.js" Line="6" Column="35" />
+      <File FileName="Assets\MovingObject.js" Line="71" Column="50" />
+      <File FileName="Assets\wall.js" Line="4" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
