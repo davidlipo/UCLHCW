@@ -220,13 +220,17 @@ public class Controller extends MonoBehaviour {
 	public function pause() {
 		playing = false;
 		GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Stop();
+		if(coinScript.coinExists){
 		coinScript.getCoinSound().volume = 0.0;
+		}
 	}
 	
 	public function play() {
 		playing = true;
 		GameObject.FindWithTag('BackgroundNoise').GetComponent.<AudioSource>().Play();
+		if(coinScript.coinExists){
 		coinScript.getCoinSound().volume = 1.0;
+		}
 	}
 	
 	public function addToScore(points : int) : int {
