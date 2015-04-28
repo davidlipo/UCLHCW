@@ -12,7 +12,10 @@ $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempt
     $dataSucc = array();
     $dataFail = array();
 
+    $counter = 0;
+
     while($res = mysqli_fetch_assoc($query)) {
+
         if($res['collected'] == 1) {
             if(isset($dataSucc[$res['laneNo']])) {
                 $dataSucc[$res['laneNo']] += 1;
@@ -29,6 +32,7 @@ $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempt
                 $dataFail[$res['laneNo']] = 1;
             }
         }
+        $counter += 1;
     }
 
     foreach ($dataSucc as $i => $value) {
@@ -46,6 +50,11 @@ $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempt
         }
     }
 
+    if ($counter==0){
+        echo "No data available.";
+    }
+
+    else{
     ksort($data);
 
     $keyArray = array();
@@ -89,5 +98,6 @@ $query = mysqli_query($link, "SELECT * FROM patientStats, attempts WHERE attempt
 
 // Display the graph
 $graph->Stroke();
+}
 //end
 ?>

@@ -1,13 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Controller.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestTest.js">
     <Files>
-      <File FileName="Assets/Controller.js" Line="121" Column="30" />
+      <File FileName="Assets/Tests/DummyTest.js" Line="12" Column="62" />
+      <File FileName="Assets/Controller.js" Line="1" Column="1" />
       <File FileName="Assets/coin.js" Line="1" Column="1" />
       <File FileName="Assets/UnityToPHP.js" Line="1" Column="1" />
       <File FileName="Assets/Tests/Unity3D_TestRunner.js" Line="1" Column="1" />
-      <File FileName="Assets/Tests/DummyTest.js" Line="19" Column="35" />
       <File FileName="Assets/Plugins/SharpUnit/Unity3D_TestReporter.cs" Line="1" Column="1" />
+      <File FileName="Assets/Player.js" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/SharpUnit/TestSuite.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestTest.js" Line="5" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

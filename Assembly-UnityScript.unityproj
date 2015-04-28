@@ -54,6 +54,7 @@
      <Compile Include="Assets\InfoObjects.js" />
      <Compile Include="Assets\MovingObject.js" />
      <Compile Include="Assets\Player.js" />
+     <Compile Include="Assets\TestTest.js" />
      <Compile Include="Assets\Tests\DummyTest.js" />
      <Compile Include="Assets\Tests\Unity3D_TestRunner.js" />
      <Compile Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Explosions\Scripts\EffectSequencer.js" />

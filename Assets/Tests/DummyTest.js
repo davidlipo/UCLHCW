@@ -8,7 +8,8 @@ class DummyTest extends TestCase {
 
     /** Setup test resources, called before each test. */
     function SetUp() {
-        dummy = "test"; 
+        dummy = "test";
+        var test : Coin = NSubstitute.Substitute.For<Coin>();
     }
 
     /** Dispose of test resources, called after each test */
